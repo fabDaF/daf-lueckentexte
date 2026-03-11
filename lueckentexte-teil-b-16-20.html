@@ -526,7 +526,7 @@ function sbUpdateCapitalization(row) {
 }
 
 // ─── Chip erstellen ───────────────────────────────────────────────────────
-function sbMakeChip(word) {
+function sbMakeChip(word, idx) {
     var chip = document.createElement('div');
     chip.className = 'chip';
     chip.textContent = word;
@@ -543,6 +543,18 @@ function sbMakeChip(word) {
         sbDragged = null;
         var c = document.getElementById('sb-insert-cursor');
         if (c && c.parentNode) c.parentNode.removeChild(c);
+    });
+    // Click to move between bank and row
+    chip.addEventListener('click', function() {
+        var bank = document.getElementById('sb-bank-' + idx);
+        var row = document.getElementById('sb-row-' + idx);
+        if (chip.parentElement === bank) {
+            row.appendChild(chip);
+        } else {
+            bank.appendChild(chip);
+        }
+        sbUpdateCapitalization(row);
+        sbCheckAuto(idx);
     });
     return chip;
 }
@@ -731,7 +743,7 @@ function initSatzbau() {
         }
 
         parts.forEach(function(word) {
-            bank.appendChild(sbMakeChip(word));
+            bank.appendChild(sbMakeChip(word, idx));
         });
 
         sbRegisterZone(bank, idx);
