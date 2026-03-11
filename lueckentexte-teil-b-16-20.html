@@ -662,19 +662,27 @@ function sbShowSolution(idx) {
     var fb   = document.getElementById('sb-fb-' + idx);
     var solution = satzbauData[idx].valid[0];
 
-    var allChips = {};
-    Array.from(bank.querySelectorAll('.chip')).forEach(function(c) { allChips[c.dataset.orig] = c; });
-    Array.from(row.querySelectorAll('.chip')).forEach(function(c)  { allChips[c.dataset.orig] = c; });
+    // Collect all chips as array (handles duplicates like two "nach")
+    var allChips = [];
+    Array.from(bank.querySelectorAll('.chip')).forEach(function(c) { allChips.push(c); });
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c)  { allChips.push(c); });
 
     while (bank.firstChild) bank.removeChild(bank.firstChild);
     while (row.firstChild)  row.removeChild(row.firstChild);
 
     solution.forEach(function(word, i) {
-        var chip = allChips[word];
-        if (chip) {
-            chip.textContent = (i === 0) ? sbCapitalize(word) : word;
-            chip.classList.remove('correct', 'incorrect');
-            row.appendChild(chip);
+        // Find first unused chip with matching orig
+        for (var j = 0; j < allChips.length; j++) {
+            if (allChips[j] && allChips[j].dataset.orig === word) {
+                var chip = allChips[j];
+                allChips[j] = null; // mark as used
+                var isProper = word.charAt(0) === word.charAt(0).toUpperCase()
+                            && word.charAt(0) !== word.charAt(0).toLowerCase();
+                chip.textContent = (i === 0 && !isProper) ? sbCapitalize(word) : word;
+                chip.classList.remove('correct', 'incorrect');
+                row.appendChild(chip);
+                break;
+            }
         }
     });
 
