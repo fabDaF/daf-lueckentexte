@@ -55,8 +55,7 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
 .letter-input.solved { border-bottom-color: #27ae60; background: #e8f8f0; color: #27ae60; font-weight: 600; }
 .text-title { font-weight: 700; color: #667eea; font-size: 1.05em; margin-bottom: 8px; display: block; }
 .satzbau-item { background: #f8f9ff; padding: 16px 20px; margin-bottom: 20px; border-radius: 10px; border-left: 4px solid #667eea; }
-.drop-row { background: white; border: 2px dashed #ccc; border-radius: 10px; padding: 14px; min-height: 60px; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.chip.punct { min-width: 32px; padding: 8px 10px; font-size: 1.2em; font-weight: 700; text-align: center; }
+/* .drop-row und .chip.punct entfernt — durch .sentence-builder und .sb-punkt ersetzt */
 .help-toggle { background: none; border: 2px solid #667eea; color: #667eea; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85em; font-weight: 600; margin-bottom: 12px; }
 .help-toggle:hover { background: #667eea; color: white; }
 .help-box { display: none; background: #f8f9ff; border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; font-size: 0.9em; line-height: 1.7; border-left: 4px solid #667eea; }
@@ -85,6 +84,39 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
     object-fit: cover;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+/* ── Sentence-Builder: Zielbereich für den fertigen Satz ──────────────── */
+.sentence-builder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px;
+    background: white;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    min-height: 56px;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.sentence-builder.correct   { border-color: #27ae60; background: #f0fff4; }
+.sentence-builder.incorrect { border-color: #e74c3c; background: #fff5f5; }
+/* ── Punkt am Satzende — erscheint nur bei korrektem Satz ────────────── */
+.sb-punkt {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #27ae60;
+    margin-left: 2px;
+    align-self: center;
+    user-select: none;
+}
+/* ── Feedback-Text unter dem Satz ────────────────────────────────────── */
+.satzbau-feedback {
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-top: 6px;
+    min-height: 1.2em;
+}
+.satzbau-feedback.correct   { color: #27ae60; }
+.satzbau-feedback.incorrect { color: #e74c3c; }
 </style>
 </head>
 <body>
@@ -168,7 +200,7 @@ function showSection(name, btn) {
     btn.classList.add('active');
 }
 
-const WS_DATA = [{"id": 1, "type": "n", "en": "housework / household chores", "artikel": "die", "de": "Hausarbeit", "plural": "Hausarbeiten"}, {"id": 2, "type": "adj", "en": "negative / bad", "de": "negativ"}, {"id": 3, "type": "v", "en": "to return / go back", "de": "zurückgehen"}, {"id": 4, "type": "n", "en": "training / apprenticeship", "artikel": "die", "de": "Ausbildung", "plural": "Ausbildungen"}, {"id": 5, "type": "n", "en": "cook / chef", "artikel": "der", "de": "Koch", "plural": "Köche"}, {"id": 6, "type": "adj", "en": "unhappy / dissatisfied", "de": "unglücklich"}, {"id": 7, "type": "v", "en": "to change / switch", "de": "wechseln"}, {"id": 8, "type": "n", "en": "merchant / salesperson", "artikel": "der", "de": "Kaufmann", "plural": "Kaufleute"}, {"id": 9, "type": "n", "en": "dream / wish", "artikel": "der", "de": "Traum", "plural": "Träume"}, {"id": 10, "type": "v", "en": "to fail / not come true", "de": "platzen"}, {"id": 11, "type": "n", "en": "lover / mistress", "artikel": "die", "de": "Geliebte", "plural": "Geliebten"}, {"id": 12, "type": "n", "en": "business trip", "artikel": "die", "de": "Geschäftsreise", "plural": "Geschäftsreisen"}, {"id": 13, "type": "n", "en": "home office / working from home", "artikel": "das", "de": "Homeoffice", "plural": "Homeoffices"}, {"id": 14, "type": "n", "en": "half a day", "artikel": "der", "de": "halber Tag", "plural": "halbe Tage"}, {"id": 15, "type": "n", "en": "company / employer", "artikel": "die", "de": "Firma", "plural": "Firmen"}, {"id": 16, "type": "n", "en": "underground / subway", "artikel": "die", "de": "U-Bahn", "plural": "U-Bahnen"}, {"id": 17, "type": "n", "en": "ticket inspector / controller", "artikel": "der", "de": "Kontrolleur", "plural": "Kontrolleure"}, {"id": 18, "type": "n", "en": "ticket", "artikel": "das", "de": "Ticket", "plural": "Tickets"}, {"id": 19, "type": "n", "en": "fine / penalty", "artikel": "das", "de": "Bußgeld", "plural": "Bußgelder"}, {"id": 20, "type": "adj", "en": "embarrassed / ashamed", "de": "verlegen"}, {"id": 21, "type": "n", "en": "housewife", "artikel": "die", "de": "Hausfrau", "plural": "Hausfrauen"}, {"id": 22, "type": "n", "en": "daily routine", "artikel": "der", "de": "Tagesablauf", "plural": "Tagesabläufe"}, {"id": 23, "type": "v", "en": "to do the shopping", "de": "einkaufen gehen"}, {"id": 24, "type": "v", "en": "to cook / prepare food", "de": "kochen"}, {"id": 25, "type": "n", "en": "partner", "artikel": "der", "de": "Partner", "plural": "Partner"}, {"id": 26, "type": "n", "en": "Italy", "artikel": "das", "de": "Italien", "plural": "Italien"}, {"id": 27, "type": "n", "en": "Nigeria", "artikel": "das", "de": "Nigeria", "plural": "Nigeria"}, {"id": 28, "type": "adj", "en": "typical / usual", "de": "typisch"}, {"id": 29, "type": "v", "en": "to get up early", "de": "früh aufstehen"}, {"id": 30, "type": "n", "en": "lunchtime / midday", "artikel": "der", "de": "Mittag", "plural": "Mittage"}];
+const WS_DATA = [{"id": 1, "type": "n", "en": "\ud83e\uddf9 housework / household chores", "artikel": "die", "de": "Hausarbeit", "plural": "Hausarbeiten"}, {"id": 2, "type": "adj", "en": "\ud83d\udcab negative / bad", "de": "negativ"}, {"id": 3, "type": "v", "en": "↩️ to return / go back", "de": "zurückgehen"}, {"id": 4, "type": "n", "en": "📚 training / apprenticeship", "artikel": "die", "de": "Ausbildung", "plural": "Ausbildungen"}, {"id": 5, "type": "n", "en": "👨\u200d🍳 cook / chef", "artikel": "der", "de": "Koch", "plural": "Köche"}, {"id": 6, "type": "adj", "en": "😞 unhappy / dissatisfied", "de": "unglücklich"}, {"id": 7, "type": "v", "en": "🔄 to change / switch", "de": "wechseln"}, {"id": 8, "type": "n", "en": "🏪 merchant / salesperson", "artikel": "der", "de": "Kaufmann", "plural": "Kaufleute"}, {"id": 9, "type": "n", "en": "💭 dream / wish", "artikel": "der", "de": "Traum", "plural": "Träume"}, {"id": 10, "type": "v", "en": "💥 to fail / not come true", "de": "platzen"}, {"id": 11, "type": "n", "en": "lover / mistress", "artikel": "die", "de": "Geliebte", "plural": "Geliebten"}, {"id": 12, "type": "n", "en": "✈️ business trip", "artikel": "die", "de": "Geschäftsreise", "plural": "Geschäftsreisen"}, {"id": 13, "type": "n", "en": "🏠 home office / working from home", "artikel": "das", "de": "Homeoffice", "plural": "Homeoffices"}, {"id": 14, "type": "n", "en": "⏳ half a day", "artikel": "der", "de": "halber Tag", "plural": "halbe Tage"}, {"id": 15, "type": "n", "en": "🏢 company / employer", "artikel": "die", "de": "Firma", "plural": "Firmen"}, {"id": 16, "type": "n", "en": "🚇 underground / subway", "artikel": "die", "de": "U-Bahn", "plural": "U-Bahnen"}, {"id": 17, "type": "n", "en": "🎫 ticket inspector / controller", "artikel": "der", "de": "Kontrolleur", "plural": "Kontrolleure"}, {"id": 18, "type": "n", "en": "🎟️ ticket", "artikel": "das", "de": "Ticket", "plural": "Tickets"}, {"id": 19, "type": "n", "en": "💰 fine / penalty", "artikel": "das", "de": "Bußgeld", "plural": "Bußgelder"}, {"id": 20, "type": "adj", "en": "😳 embarrassed / ashamed", "de": "verlegen"}, {"id": 21, "type": "n", "en": "housewife", "artikel": "die", "de": "Hausfrau", "plural": "Hausfrauen"}, {"id": 22, "type": "n", "en": "📋 daily routine", "artikel": "der", "de": "Tagesablauf", "plural": "Tagesabläufe"}, {"id": 23, "type": "v", "en": "🛒 to do the shopping", "de": "einkaufen gehen"}, {"id": 24, "type": "v", "en": "🍳 to cook / prepare food", "de": "kochen"}, {"id": 25, "type": "n", "en": "👫 partner", "artikel": "der", "de": "Partner", "plural": "Partner"}, {"id": 26, "type": "n", "en": "🇮🇹 Italy", "artikel": "das", "de": "Italien", "plural": "Italien"}, {"id": 27, "type": "n", "en": "🇳🇬 Nigeria", "artikel": "das", "de": "Nigeria", "plural": "Nigeria"}, {"id": 28, "type": "adj", "en": "typical / usual", "de": "typisch"}, {"id": 29, "type": "v", "en": "⏰ to get up early", "de": "früh aufstehen"}, {"id": 30, "type": "n", "en": "🕛 lunchtime / midday", "artikel": "der", "de": "Mittag", "plural": "Mittage"}];
 function buildWortschatz() {
     const container = document.getElementById('wsContainer');
     container.innerHTML = '';
@@ -222,6 +254,14 @@ function buildWortschatz() {
             plLabel.textContent = 'Plural';
             plWrap.appendChild(plInput);
             plWrap.appendChild(plLabel);
+            // Handle words with no plural (–)
+            if (item.plural === '\u2013' || item.plural === '-') {
+                plInput.value = '\u2013';
+                plInput.disabled = true;
+                plInput.classList.add('correct');
+                plInput.style.opacity = '0.6';
+                plInput.title = 'Dieses Wort hat keinen Plural';
+            }
             fields.appendChild(plWrap);
         }
         div.appendChild(fields);
@@ -229,11 +269,13 @@ function buildWortschatz() {
     });
 }
 function checkWsInput(inp) {
-    const val = inp.value.trim();
-    if (!val) { inp.classList.remove('correct','wrong'); return; }
-    const ok = val === inp.dataset.answer;
+    var val = inp.value.trim();
+    var ans = inp.dataset.answer;
     inp.classList.remove('correct','wrong');
-    inp.classList.add(ok ? 'correct' : 'wrong');
+    if (!val) return;
+    if (val === ans) { inp.classList.add('correct'); return; }
+    if (ans.indexOf(val) === 0) return; // prefix — stay neutral
+    inp.classList.add('wrong');
 }
 function showAllWs() {
     document.querySelectorAll('#wsContainer .ws-input').forEach(inp => {
@@ -379,83 +421,317 @@ function showAllLuecken() {
 }
 function resetLuecken() { buildLuecken(); }
 
-const SATZBAU_DATA = [{"help": "B16 – Monica", "chips": ["Nach", "drei", "Monaten", "bin", "ich", "nach", "Italien", "zurückgegangen", "."]}, {"help": "B17 – Marco", "chips": ["Ich", "war", "sehr", "unglücklich", "in", "dem", "Beruf", "."]}, {"help": "B17 – Wechsel", "chips": ["Nach", "zwei", "Jahren", "habe", "ich", "gewechselt", "."]}, {"help": "B18 – Träume", "chips": ["Meine", "Träume", "sind", "geplatzt", "."]}, {"help": "B19 – Mühleisen", "chips": ["Ich", "arbeite", "halbtags", "im", "Homeoffice", "."]}, {"help": "B19 – Morgen", "chips": ["Am", "Morgen", "bringe", "ich", "die", "Kinder", "in", "die", "Schule", "."]}, {"help": "B20 – Jonas", "chips": ["Ich", "hatte", "kein", "Ticket", "gekauft", "."]}, {"help": "B20 – Kontrolleure", "chips": ["Ich", "musste", "ein", "Bußgeld", "bezahlen", "."]}];
-let sbDragChip = null;
-function buildSatzbau() {
-    const container = document.getElementById('satzbauContainer');
+var satzbauData = [
+    {
+        parts: ['nach', 'drei', 'Monaten', 'bin', 'ich', 'nach', 'Italien', 'zurückgegangen'],
+        valid: [['nach', 'drei', 'Monaten', 'bin', 'ich', 'nach', 'Italien', 'zurückgegangen']],
+        punct: '.',
+        help: 'B16 – Monica'
+    },
+    {
+        parts: ['ich', 'war', 'sehr', 'unglücklich', 'in', 'dem', 'Beruf'],
+        valid: [['ich', 'war', 'sehr', 'unglücklich', 'in', 'dem', 'Beruf']],
+        punct: '.',
+        help: 'B17 – Marco'
+    },
+    {
+        parts: ['nach', 'zwei', 'Jahren', 'habe', 'ich', 'gewechselt'],
+        valid: [['nach', 'zwei', 'Jahren', 'habe', 'ich', 'gewechselt']],
+        punct: '.',
+        help: 'B17 – Wechsel'
+    },
+    {
+        parts: ['meine', 'Träume', 'sind', 'geplatzt'],
+        valid: [['meine', 'Träume', 'sind', 'geplatzt']],
+        punct: '.',
+        help: 'B18 – Träume'
+    },
+    {
+        parts: ['ich', 'arbeite', 'halbtags', 'im', 'Homeoffice'],
+        valid: [['ich', 'arbeite', 'halbtags', 'im', 'Homeoffice']],
+        punct: '.',
+        help: 'B19 – Mühleisen'
+    },
+    {
+        parts: ['am', 'Morgen', 'bringe', 'ich', 'die', 'Kinder', 'in', 'die', 'Schule'],
+        valid: [['am', 'Morgen', 'bringe', 'ich', 'die', 'Kinder', 'in', 'die', 'Schule']],
+        punct: '.',
+        help: 'B19 – Morgen'
+    },
+    {
+        parts: ['ich', 'hatte', 'kein', 'Ticket', 'gekauft'],
+        valid: [['ich', 'hatte', 'kein', 'Ticket', 'gekauft']],
+        punct: '.',
+        help: 'B20 – Jonas'
+    },
+    {
+        parts: ['ich', 'musste', 'ein', 'Bußgeld', 'bezahlen'],
+        valid: [['ich', 'musste', 'ein', 'Bußgeld', 'bezahlen']],
+        punct: '.',
+        help: 'B20 – Kontrolleure'
+    }
+];
+// ─── Globale Drag-Variablen ───────────────────────────────────────────────
+var sbDragged = null;
+
+// ─── Insert-Cursor ────────────────────────────────────────────────────────
+function getSbCursor() {
+    var c = document.getElementById('sb-insert-cursor');
+    if (!c) {
+        c = document.createElement('div');
+        c.id = 'sb-insert-cursor';
+        c.style.cssText = 'width:3px;min-height:32px;background:#e67e22;border-radius:2px;align-self:stretch;pointer-events:none;flex-shrink:0;';
+    }
+    return c;
+}
+
+// ─── Einfügeposition berechnen ────────────────────────────────────────
+function getSbInsertPos(zone, clientX) {
+    var chips = Array.from(zone.querySelectorAll('.chip'));
+    for (var i = 0; i < chips.length; i++) {
+        var r = chips[i].getBoundingClientRect();
+        if (clientX < r.left + r.width / 2) return chips[i];
+    }
+    return null;
+}
+
+// ─── Großschreibung aktualisieren ─────────────────────────────────────
+function sbCapitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function sbUpdateCapitalization(row) {
+    var chips = Array.from(row.querySelectorAll('.chip'));
+    chips.forEach(function(c, i) {
+        var orig = c.dataset.orig;
+        var isProper = orig.charAt(0) === orig.charAt(0).toUpperCase()
+                    && orig.charAt(0) !== orig.charAt(0).toLowerCase();
+        if (isProper) {
+            c.textContent = orig;
+        } else {
+            c.textContent = (i === 0) ? sbCapitalize(orig) : orig;
+        }
+    });
+}
+
+// ─── Chip erstellen ───────────────────────────────────────────────────────
+function sbMakeChip(word) {
+    var chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = word;
+    chip.dataset.orig = word;
+    chip.draggable = true;
+
+    chip.addEventListener('dragstart', function(e) {
+        sbDragged = chip;
+        e.dataTransfer.setData('text/plain', '');
+        setTimeout(function() { chip.style.opacity = '0.4'; }, 0);
+    });
+    chip.addEventListener('dragend', function() {
+        chip.style.opacity = '';
+        sbDragged = null;
+        var c = document.getElementById('sb-insert-cursor');
+        if (c && c.parentNode) c.parentNode.removeChild(c);
+    });
+    return chip;
+}
+
+// ─── Zone registrieren (Bank oder Row) ───────────────────────────────────
+function sbRegisterZone(zone, idx) {
+    zone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        if (!sbDragged) return;
+        var cursor = getSbCursor();
+        var before = getSbInsertPos(zone, e.clientX);
+        if (before) zone.insertBefore(cursor, before);
+        else zone.appendChild(cursor);
+    });
+
+    zone.addEventListener('dragleave', function(e) {
+        if (!zone.contains(e.relatedTarget)) {
+            var c = document.getElementById('sb-insert-cursor');
+            if (c && c.parentNode === zone) zone.removeChild(c);
+        }
+    });
+
+    zone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        if (!sbDragged) return;
+        var cursor = document.getElementById('sb-insert-cursor');
+        if (cursor && cursor.parentNode === zone) {
+            zone.insertBefore(sbDragged, cursor);
+            zone.removeChild(cursor);
+        } else {
+            zone.appendChild(sbDragged);
+        }
+        sbDragged = null;
+        var row = document.getElementById('sb-row-' + idx);
+        sbUpdateCapitalization(row);
+        sbCheckAuto(idx);
+    });
+}
+
+// ─── Einfärben + Punkt ────────────────────────────────────────────────────
+function sbColorRow(idx) {
+    var row = document.getElementById('sb-row-' + idx);
+    var chips = Array.from(row.querySelectorAll('.chip'));
+    var order = chips.map(function(c) { return c.dataset.orig; });
+    var ok = satzbauData[idx].valid.some(function(v) {
+        return JSON.stringify(v) === JSON.stringify(order);
+    });
+    chips.forEach(function(c) {
+        c.classList.remove('correct', 'incorrect');
+        c.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    var existing = row.querySelector('.sb-punkt');
+    if (existing) existing.parentNode.removeChild(existing);
+    if (ok) {
+        var punkt = document.createElement('span');
+        punkt.className = 'sb-punkt';
+        punkt.textContent = satzbauData[idx].punct || '.';
+        row.appendChild(punkt);
+    }
+    return ok;
+}
+
+// ─── Auto-Auswertung ──────────────────────────────────────────────────────
+function sbCheckAuto(idx) {
+    var bank = document.getElementById('sb-bank-' + idx);
+    var row  = document.getElementById('sb-row-' + idx);
+    var fb   = document.getElementById('sb-fb-' + idx);
+
+    if (bank.querySelectorAll('.chip').length > 0) {
+        row.querySelectorAll('.chip').forEach(function(c) {
+            c.classList.remove('correct', 'incorrect');
+        });
+        row.classList.remove('correct', 'incorrect');
+        fb.textContent = '';
+        return;
+    }
+
+    setTimeout(function() {
+        var ok = sbColorRow(idx);
+        if (ok) {
+            row.classList.add('correct'); row.classList.remove('incorrect');
+            fb.className = 'satzbau-feedback correct';
+            fb.textContent = '✓ Korrekt!';
+            sbCheckAllDone();
+        } else {
+            row.classList.add('incorrect'); row.classList.remove('correct');
+            fb.className = 'satzbau-feedback incorrect';
+            fb.textContent = '✗ Falsche Reihenfolge – verschiebe die Chips!';
+        }
+    }, 500);
+}
+
+// ─── Alle Sätze fertig? ───────────────────────────────────────────────────
+function sbCheckAllDone() {
+    var allOk = satzbauData.every(function(_, i) {
+        var row = document.getElementById('sb-row-' + i);
+        return row && row.classList.contains('correct');
+    });
+}
+
+// ─── Lösung anzeigen ──────────────────────────────────────────────────────
+function sbShowSolution(idx) {
+    var bank = document.getElementById('sb-bank-' + idx);
+    var row  = document.getElementById('sb-row-' + idx);
+    var fb   = document.getElementById('sb-fb-' + idx);
+    var solution = satzbauData[idx].valid[0];
+
+    var allChips = {};
+    Array.from(bank.querySelectorAll('.chip')).forEach(function(c) { allChips[c.dataset.orig] = c; });
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c)  { allChips[c.dataset.orig] = c; });
+
+    while (bank.firstChild) bank.removeChild(bank.firstChild);
+    while (row.firstChild)  row.removeChild(row.firstChild);
+
+    solution.forEach(function(word, i) {
+        var chip = allChips[word];
+        if (chip) {
+            chip.textContent = (i === 0) ? sbCapitalize(word) : word;
+            chip.classList.remove('correct', 'incorrect');
+            row.appendChild(chip);
+        }
+    });
+
+    fb.textContent = '';
+    setTimeout(function() { sbCheckAuto(idx); }, 100);
+}
+
+// ─── Initialisierung ──────────────────────────────────────────────────────
+function initSatzbau() {
+    var container = document.getElementById('satzbauContainer');
     container.innerHTML = '';
-    SATZBAU_DATA.forEach((item, idx) => {
-        const div = document.createElement('div');
+    satzbauData.forEach(function(ex, idx) {
+        var div = document.createElement('div');
         div.className = 'satzbau-item';
-        const helpBtn = document.createElement('button');
+
+        // Help button
+        var helpBtn = document.createElement('button');
         helpBtn.className = 'help-toggle';
         helpBtn.textContent = 'Tipp anzeigen';
-        const helpBox = document.createElement('div');
+        var helpBox = document.createElement('div');
         helpBox.className = 'help-box';
-        helpBox.textContent = item.help;
-        helpBtn.addEventListener('click', () => {
+        helpBox.textContent = ex.help;
+        helpBtn.addEventListener('click', function() {
             helpBox.classList.toggle('show');
             helpBtn.textContent = helpBox.classList.contains('show') ? 'Tipp ausblenden' : 'Tipp anzeigen';
         });
         div.appendChild(helpBtn);
         div.appendChild(helpBox);
-        const dropRow = document.createElement('div');
-        dropRow.className = 'drop-row';
-        dropRow.dataset.idx = idx;
-        div.appendChild(dropRow);
-        const bank = document.createElement('div');
-        bank.className = 'chip-bank';
-        bank.dataset.idx = idx;
+
+        // Sentence builder
+        var bank = document.createElement('div');
+        bank.className = 'chips-container';
+        bank.id = 'sb-bank-' + idx;
+
+        var row = document.createElement('div');
+        row.className = 'sentence-builder';
+        row.id = 'sb-row-' + idx;
+
+        var fb = document.createElement('div');
+        fb.className = 'satzbau-feedback';
+        fb.id = 'sb-fb-' + idx;
+
         div.appendChild(bank);
-        [...item.chips].sort(() => Math.random() - 0.5).forEach(word => {
-            const chip = document.createElement('div');
-            chip.className = 'chip' + (/^[.,!?]$/.test(word) ? ' punct' : '');
-            chip.textContent = word;
-            chip.draggable = true;
-            chip.dataset.word = word;
-            chip.addEventListener('dragstart', () => { sbDragChip = chip; chip.style.opacity = '0.5'; });
-            chip.addEventListener('dragend', () => { sbDragChip = null; chip.style.opacity = '1'; });
-            chip.addEventListener('click', () => {
-                const dr = document.querySelector('.drop-row[data-idx="'+idx+'"]');
-                const bk = document.querySelector('.chip-bank[data-idx="'+idx+'"]');
-                if (chip.parentElement === bk) dr.appendChild(chip);
-                else bk.appendChild(chip);
-            });
-            bank.appendChild(chip);
-        });
-        [dropRow, bank].forEach(zone => {
-            zone.addEventListener('dragover', e => e.preventDefault());
-            zone.addEventListener('drop', e => { e.preventDefault(); if (sbDragChip) zone.appendChild(sbDragChip); });
-        });
-        const checkBtn = document.createElement('button');
-        checkBtn.className = 'btn btn-show';
-        checkBtn.textContent = 'Prüfen';
-        checkBtn.style.marginTop = '8px';
-        checkBtn.addEventListener('click', () => {
-            Array.from(dropRow.children).forEach((chip, i) => {
-                const ok = chip.dataset.word === item.chips[i];
-                chip.classList.remove('correct','wrong');
-                chip.classList.add(ok ? 'correct' : 'wrong');
-            });
-        });
-        const resetBtn = document.createElement('button');
-        resetBtn.className = 'btn btn-reset';
-        resetBtn.textContent = 'Reset';
-        resetBtn.style.marginTop = '8px';
-        resetBtn.addEventListener('click', () => buildSatzbau());
-        const row2 = document.createElement('div');
-        row2.className = 'btn-row';
-        row2.appendChild(checkBtn);
-        row2.appendChild(resetBtn);
-        div.appendChild(row2);
+        div.appendChild(row);
+        div.appendChild(fb);
+
+        // Solution button
+        var solBtn = document.createElement('button');
+        solBtn.className = 'btn btn-show';
+        solBtn.textContent = 'Lösung anzeigen';
+        solBtn.style.marginTop = '8px';
+        solBtn.addEventListener('click', function() { sbShowSolution(idx); });
+
+        var btnRow = document.createElement('div');
+        btnRow.className = 'btn-row';
+        btnRow.appendChild(solBtn);
+        div.appendChild(btnRow);
+
         container.appendChild(div);
+
+        // Shuffle and create chips
+        var parts = ex.parts.slice();
+        for (var i = parts.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = parts[i]; parts[i] = parts[j]; parts[j] = tmp;
+        }
+
+        parts.forEach(function(word) {
+            bank.appendChild(sbMakeChip(word));
+        });
+
+        sbRegisterZone(bank, idx);
+        sbRegisterZone(row, idx);
     });
 }
 
 buildWortschatz();
 buildGenus();
 buildLuecken();
-buildSatzbau();
+initSatzbau();
 </script>
 </body>
 </html>
