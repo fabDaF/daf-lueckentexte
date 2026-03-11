@@ -27,26 +27,18 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
 .timer-display { display: flex; justify-content: center; gap: 20px; margin-top: 10px; font-size: 0.95em; }
 .current-time { font-weight: 600; color: #667eea; }
 .best-time { font-weight: 600; color: #f39c12; }
-.ws-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
-.ws-item:last-child { border-bottom: none; }
-.ws-prompt { font-weight: 600; color: #764ba2; min-width: 160px; font-size: 0.95em; padding-top: 4px; }
-.ws-fields { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.ws-input { border: none; border-bottom: 2px solid #667eea; background: #fff; padding: 4px 8px; font-family: inherit; font-size: 0.95em; outline: none; transition: all 0.2s; width: 140px; }
-.ws-input:focus { border-bottom-color: #764ba2; background: #f0f7ff; }
-.ws-input.correct { border-bottom-color: #27ae60; background: #e8f8f0; }
-.ws-input.wrong { border-bottom-color: #e74c3c; background: #fdeaea; }
-.ws-input.artikel { width: 70px; }
-.ws-input.plural { width: 150px; }
-.ws-label { font-size: 0.8em; color: #999; }
+.luecken-item { background: #f8f9ff; border-radius: 10px; padding: 14px 18px; border-left: 4px solid #667eea; }
+input.blank { border: none; border-bottom: 2px solid #667eea; background: transparent; padding: 4px 8px; font-family: inherit; font-size: 0.95em; outline: none; transition: all 0.2s; }
+input.blank:focus { border-bottom-color: #764ba2; background: #f0f7ff; }
+input.blank.correct { border-bottom-color: #27ae60; background: #e8f8f0; color: #27ae60; font-weight: 600; }
+input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e74c3c; }
 .genus-categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
 .genus-cat { background: #f0f0f0; border: 2px dashed #ccc; border-radius: 10px; padding: 12px; min-height: 120px; }
 .genus-cat-title { font-weight: 700; color: #667eea; text-align: center; margin-bottom: 8px; font-size: 0.95em; }
 .chip-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f8f8f8; border-radius: 10px; min-height: 60px; }
 .chip { background: white; border: 2px solid #667eea; color: #667eea; padding: 8px 14px; border-radius: 20px; cursor: move; font-weight: 500; font-size: 0.9em; transition: all 0.2s; user-select: none; }
 .chip:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(102,126,234,0.3); }
-.chip.placed { background: #667eea; color: white; }
 .chip.correct { background: #27ae60; border-color: #27ae60; color: white; }
-.chip.wrong { background: #e74c3c; border-color: #e74c3c; color: white; }
 .luecken-text { line-height: 2.2; font-size: 1.0em; }
 .luecken-person { font-weight: 700; color: #764ba2; display: block; margin-top: 16px; margin-bottom: 4px; }
 .luecken-person:first-child { margin-top: 0; }
@@ -57,9 +49,15 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
 .letter-input.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e74c3c; }
 .letter-input.solved { border-bottom-color: #27ae60; background: #e8f8f0; color: #27ae60; font-weight: 600; }
 .text-title { font-weight: 700; color: #667eea; font-size: 1.05em; margin-bottom: 8px; display: block; }
-.satzbau-item { background: #f8f9ff; padding: 16px 20px; margin-bottom: 20px; border-radius: 10px; border-left: 4px solid #667eea; }
-.drop-row { background: white; border: 2px dashed #ccc; border-radius: 10px; padding: 14px; min-height: 60px; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.chip.punct { min-width: 32px; padding: 8px 10px; font-size: 1.2em; font-weight: 700; text-align: center; }
+.chips-container { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f8f8f8; border-radius: 10px; min-height: 56px; margin-bottom: 10px; }
+.sentence-builder { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; background: white; border: 2px dashed #ccc; border-radius: 10px; min-height: 56px; align-items: center; margin-bottom: 6px; }
+.sentence-builder.correct { border-color: #27ae60; background: #f0fff4; }
+.sentence-builder.incorrect { border-color: #e74c3c; background: #fff5f5; }
+.chip.incorrect { background: #e74c3c; border-color: #e74c3c; color: white; }
+.sb-punkt { font-size: 1.1em; font-weight: 700; color: #27ae60; margin-left: 2px; align-self: center; user-select: none; }
+.satzbau-feedback { font-size: 0.9em; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
+.satzbau-feedback.correct { color: #27ae60; }
+.satzbau-feedback.incorrect { color: #e74c3c; }
 .help-toggle { background: none; border: 2px solid #667eea; color: #667eea; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85em; font-weight: 600; margin-bottom: 12px; }
 .help-toggle:hover { background: #667eea; color: white; }
 .help-box { display: none; background: #f8f9ff; border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; font-size: 0.9em; line-height: 1.7; border-left: 4px solid #667eea; }
@@ -117,10 +115,10 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
                 Bei Nomen: Artikel (der/die/das) · deutsches Wort · Plural.<br>
                 Bei Verben und Adjektiven: nur das deutsche Wort.
             </div>
-            <div id="wsContainer"></div>
+            <div id="wortschatzContainer" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"></div>
             <div class="btn-row">
-                <button class="btn btn-show" onclick="showWSLoesung()">Lösungen</button>
-                <button class="btn btn-reset" onclick="resetWS()">Neu starten</button>
+                <button class="btn btn-show" onclick="showWortschatzLoesung()">Lösungen</button>
+                <button class="btn btn-reset" onclick="resetWortschatz()">Neu starten</button>
             </div>
             <div class="timer-display">
                 <span class="current-time">⏱️ <span id="timer-0">00:00</span></span>
@@ -204,9 +202,50 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
                 🔹 Das Verb steht auf Position 2.<br>
                 🔹 Standard: Subjekt – Verb – Rest
             </div>
-            <div id="satzbauContainer"></div>
+            <div style="margin-bottom:18px;">
+<button onclick="document.getElementById('sb-help-0').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
+<div class="chips-container" id="sb-bank-0"></div>
+<div class="sentence-builder" id="sb-row-0"></div>
+<div class="satzbau-feedback" id="sb-fb-0"></div>
+<button onclick="sbShowSolution(0)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
+</div>
+<div style="margin-bottom:18px;">
+<button onclick="document.getElementById('sb-help-1').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
+<div class="chips-container" id="sb-bank-1"></div>
+<div class="sentence-builder" id="sb-row-1"></div>
+<div class="satzbau-feedback" id="sb-fb-1"></div>
+<button onclick="sbShowSolution(1)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
+</div>
+<div style="margin-bottom:18px;">
+<button onclick="document.getElementById('sb-help-2').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
+<div class="chips-container" id="sb-bank-2"></div>
+<div class="sentence-builder" id="sb-row-2"></div>
+<div class="satzbau-feedback" id="sb-fb-2"></div>
+<button onclick="sbShowSolution(2)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
+</div>
+<div style="margin-bottom:18px;">
+<button onclick="document.getElementById('sb-help-3').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
+<div class="chips-container" id="sb-bank-3"></div>
+<div class="sentence-builder" id="sb-row-3"></div>
+<div class="satzbau-feedback" id="sb-fb-3"></div>
+<button onclick="sbShowSolution(3)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
+</div>
+<div style="margin-bottom:18px;">
+<button onclick="document.getElementById('sb-help-4').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
+<div class="chips-container" id="sb-bank-4"></div>
+<div class="sentence-builder" id="sb-row-4"></div>
+<div class="satzbau-feedback" id="sb-fb-4"></div>
+<button onclick="sbShowSolution(4)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
+</div>
+<div style="margin-bottom:18px;">
+<button onclick="document.getElementById('sb-help-5').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
+<div class="chips-container" id="sb-bank-5"></div>
+<div class="sentence-builder" id="sb-row-5"></div>
+<div class="satzbau-feedback" id="sb-fb-5"></div>
+<button onclick="sbShowSolution(5)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
+</div>
             <div class="btn-row">
-                <button class="btn btn-show" onclick="showSatzbauLoesung()">Lösungen</button>
+                <button class="btn btn-show" onclick="sbShowAllSolutions()">Lösungen</button>
                 <button class="btn btn-reset" onclick="resetSatzbau()">Neu starten</button>
             </div>
             <div class="timer-display">
@@ -224,11 +263,11 @@ h1 { text-align: center; font-size: 1.6em; margin-bottom: 4px; background: linea
 
 <script>
 // ── DATA ──────────────────────────────────────────────
-const WORTSCHATZ = [{"id": 1, "type": "n", "en": "sport / athletics", "artikel": "der", "de": "Sport", "plural": "Sport"}, {"id": 2, "type": "adj", "en": "sporty / athletic", "de": "sportlich"}, {"id": 3, "type": "n", "en": "hobby", "artikel": "das", "de": "Hobby", "plural": "Hobbys"}, {"id": 4, "type": "n", "en": "training session", "artikel": "das", "de": "Training", "plural": "Trainings"}, {"id": 5, "type": "v", "en": "to train / practise", "de": "trainieren"}, {"id": 6, "type": "n", "en": "dancing school", "artikel": "die", "de": "Tanzschule", "plural": "Tanzschulen"}, {"id": 7, "type": "n", "en": "dancing teacher (f)", "artikel": "die", "de": "Tanzlehrerin", "plural": "Tanzlehrerinnen"}, {"id": 8, "type": "n", "en": "birthday", "artikel": "der", "de": "Geburtstag", "plural": "Geburtstage"}, {"id": 9, "type": "n", "en": "series / TV show", "artikel": "die", "de": "Serie", "plural": "Serien"}, {"id": 10, "type": "n", "en": "apartment / flat", "artikel": "die", "de": "Wohnung", "plural": "Wohnungen"}, {"id": 11, "type": "n", "en": "room", "artikel": "das", "de": "Zimmer", "plural": "Zimmer"}, {"id": 12, "type": "n", "en": "apartment block / high-rise", "artikel": "das", "de": "Hochhaus", "plural": "Hochhäuser"}, {"id": 13, "type": "n", "en": "floor / storey", "artikel": "der", "de": "Stock", "plural": "Stockwerke"}, {"id": 14, "type": "n", "en": "garden", "artikel": "der", "de": "Garten", "plural": "Gärten"}, {"id": 15, "type": "n", "en": "house", "artikel": "das", "de": "Haus", "plural": "Häuser"}, {"id": 16, "type": "n", "en": "city centre", "artikel": "das", "de": "Zentrum", "plural": "Zentren"}, {"id": 17, "type": "n", "en": "journey / trip", "artikel": "die", "de": "Reise", "plural": "Reisen"}, {"id": 18, "type": "v", "en": "to travel", "de": "reisen"}, {"id": 19, "type": "n", "en": "summer", "artikel": "der", "de": "Sommer", "plural": "Sommer"}, {"id": 20, "type": "n", "en": "hotel", "artikel": "das", "de": "Hotel", "plural": "Hotels"}, {"id": 21, "type": "n", "en": "bicycle", "artikel": "das", "de": "Fahrrad", "plural": "Fahrräder"}, {"id": 22, "type": "n", "en": "nutrition / diet", "artikel": "die", "de": "Ernährung", "plural": "Ernährungen"}, {"id": 23, "type": "n", "en": "fitness studio / gym", "artikel": "das", "de": "Fitnessstudio", "plural": "Fitnessstudios"}, {"id": 24, "type": "v", "en": "to relax", "de": "sich entspannen"}, {"id": 25, "type": "n", "en": "yoga", "artikel": "das", "de": "Yoga", "plural": "Yoga"}, {"id": 26, "type": "n", "en": "twins", "artikel": "die", "de": "Zwillinge", "plural": "Zwillinge"}, {"id": 27, "type": "n", "en": "grandchild / grandchildren", "artikel": "der", "de": "Enkel", "plural": "Enkel"}, {"id": 28, "type": "adj", "en": "adult / grown-up", "de": "erwachsen"}, {"id": 29, "type": "n", "en": "doctor's practice", "artikel": "die", "de": "Arztpraxis", "plural": "Arztpraxen"}, {"id": 30, "type": "n", "en": "nursery / kindergarten", "artikel": "der", "de": "Kindergarten", "plural": "Kindergärten"}];
-const GENUS_NOUNS = [{"id": 1, "type": "n", "en": "sport / athletics", "artikel": "der", "de": "Sport", "plural": "Sport"}, {"id": 3, "type": "n", "en": "hobby", "artikel": "das", "de": "Hobby", "plural": "Hobbys"}, {"id": 4, "type": "n", "en": "training session", "artikel": "das", "de": "Training", "plural": "Trainings"}, {"id": 6, "type": "n", "en": "dancing school", "artikel": "die", "de": "Tanzschule", "plural": "Tanzschulen"}, {"id": 7, "type": "n", "en": "dancing teacher (f)", "artikel": "die", "de": "Tanzlehrerin", "plural": "Tanzlehrerinnen"}, {"id": 8, "type": "n", "en": "birthday", "artikel": "der", "de": "Geburtstag", "plural": "Geburtstage"}, {"id": 9, "type": "n", "en": "series / TV show", "artikel": "die", "de": "Serie", "plural": "Serien"}, {"id": 10, "type": "n", "en": "apartment / flat", "artikel": "die", "de": "Wohnung", "plural": "Wohnungen"}, {"id": 11, "type": "n", "en": "room", "artikel": "das", "de": "Zimmer", "plural": "Zimmer"}, {"id": 12, "type": "n", "en": "apartment block / high-rise", "artikel": "das", "de": "Hochhaus", "plural": "Hochhäuser"}, {"id": 13, "type": "n", "en": "floor / storey", "artikel": "der", "de": "Stock", "plural": "Stockwerke"}, {"id": 14, "type": "n", "en": "garden", "artikel": "der", "de": "Garten", "plural": "Gärten"}, {"id": 15, "type": "n", "en": "house", "artikel": "das", "de": "Haus", "plural": "Häuser"}, {"id": 16, "type": "n", "en": "city centre", "artikel": "das", "de": "Zentrum", "plural": "Zentren"}, {"id": 17, "type": "n", "en": "journey / trip", "artikel": "die", "de": "Reise", "plural": "Reisen"}, {"id": 19, "type": "n", "en": "summer", "artikel": "der", "de": "Sommer", "plural": "Sommer"}, {"id": 20, "type": "n", "en": "hotel", "artikel": "das", "de": "Hotel", "plural": "Hotels"}, {"id": 21, "type": "n", "en": "bicycle", "artikel": "das", "de": "Fahrrad", "plural": "Fahrräder"}, {"id": 22, "type": "n", "en": "nutrition / diet", "artikel": "die", "de": "Ernährung", "plural": "Ernährungen"}, {"id": 23, "type": "n", "en": "fitness studio / gym", "artikel": "das", "de": "Fitnessstudio", "plural": "Fitnessstudios"}, {"id": 25, "type": "n", "en": "yoga", "artikel": "das", "de": "Yoga", "plural": "Yoga"}, {"id": 26, "type": "n", "en": "twins", "artikel": "die", "de": "Zwillinge", "plural": "Zwillinge"}, {"id": 27, "type": "n", "en": "grandchild / grandchildren", "artikel": "der", "de": "Enkel", "plural": "Enkel"}, {"id": 29, "type": "n", "en": "doctor's practice", "artikel": "die", "de": "Arztpraxis", "plural": "Arztpraxen"}, {"id": 30, "type": "n", "en": "nursery / kindergarten", "artikel": "der", "de": "Kindergarten", "plural": "Kindergärten"}];
-const LUECKEN_DATA = [{"id": "A11", "title": "11 – Anke, Erika und Bibi stellen sich vor", "persons": [{"name": "Anke", "text": "Hallo, mein Name ist Anke. Ich bin sehr sportlich. Ich bin jetzt siebzehn Jahre alt. Ich habe im Januar Geburtstag. Mein Hobby ist Judo. Ich mache das seit ich zehn Jahre alt bin. Ich trainiere viermal pro Woche. Außerdem gehe ich regelmäßig joggen und fahre immer mit dem Fahrrad."}, {"name": "Erika", "text": "Hallo, ich bin Erika. Ich bin nicht so sportlich. Ich lese lieber und sehe fern, am liebsten Serien. Ich lese jeden Tag mindestens zwei Stunden. Ich möchte später Literatur studieren und vielleicht Schriftstellerin werden. In drei Wochen werde ich auch siebzehn."}, {"name": "Bibi", "text": "Ich heiße Bibi. Anke und Erika sind meine Freundinnen. Wir wohnen in Darmstadt. Das liegt etwa fünfunddreißig Kilometer südlich von Frankfurt. Meine Hobbys sind Tanzen und Reisen. Ich gehe jeden Freitag in eine Tanzschule. Ich möchte vielleicht Tanzlehrerin werden. Ich bin noch sechzehn, aber ich habe bald Geburtstag."}]}, {"id": "A12", "title": "12 – Eltern, Geschwister und Kinder (II)", "persons": [{"name": "Maik und Peggy Krause", "text": "Maik und Peggy Krause wohnen in Cottbus. Das liegt etwa 130 Kilometer südöstlich von Berlin. Maik ist Lehrer von Beruf. Seine Frau Peggy arbeitet in einem Kindergarten. Sie haben zwei Kinder, einen Sohn und eine Tochter. Die Kinder sind noch klein. Ihr Sohn ist fünf Jahre alt und ihre Tochter drei."}, {"name": "Familie Kramer", "text": "Familie Kramer wohnt in Emden. Das liegt im Norden von Deutschland. Herr Kramer ist Arzt und seine Frau ist Ärztin. Sie haben zusammen eine Arztpraxis. Herr und Frau Kramer haben vier Kinder, zwei Mädchen und zwei Jungen. Die Mädchen sind siebzehn und dreizehn Jahre alt. Die Jungen sind Zwillinge. Sie sind acht Jahre alt."}, {"name": "Helmut und Klara Häberle", "text": "Helmut und Klara Häberle wohnen in Tübingen. Das liegt in Süddeutschland, ungefähr 40 Kilometer südlich von Stuttgart. Helmut und Klara sind schon über 50 Jahre verheiratet. Jetzt sind sie beide pensioniert. Helmut hat früher als Hausmeister an der Universität gearbeitet. Klara war Putzfrau und hat sich um die Kinder gekümmert. Die Häberles haben drei Kinder. Die Kinder sind schon lange erwachsen. Sie sind alle verheiratet und haben selbst Kinder. Insgesamt haben die Häberles sieben Enkel."}]}, {"id": "A13", "title": "13 – Eine sportliche Familie", "persons": [{"name": "Sonja (Ballett)", "text": "Tochter Sonja geht zum Ballett. Sie tanzt seit sie fünf Jahre alt ist. Sie achtet sehr auf ihre Ernährung und ihr Gewicht. Sie geht auch früh ins Bett, trinkt keinen Alkohol und raucht natürlich auch nicht. Wenn sie kein Ballett-Training hat, geht sie auch gern schwimmen."}, {"name": "Max (Fußball)", "text": "Sohn Max spielt Fußball. Er geht viermal pro Woche zum Training, denn er möchte Profifußballer werden. Zum Training fährt er immer viele Kilometer mit dem Fahrrad. Wenn er kein Training hat, geht er zum Joggen in den Wald oder spielt mit Freunden auf der Straße. Ein Leben ohne Fußball kann sich Max nicht vorstellen."}, {"name": "Herr Kerner (Fitness)", "text": "Herr Kerner hat eine Jahreskarte für das Fitnessstudio. So oft wie möglich geht er nach der Arbeit ins Studio. Er macht Krafttraining oder er versucht seine Kondition mit Laufen oder Fahrradfahren zu verbessern. Nach dem Training geht er zur Entspannung gerne noch eine Weile in die Sauna. Außerdem geht Herr Kerner jeden Morgen eine halbe Stunde zu Fuß zur Arbeit."}, {"name": "Frau Kerner (Yoga)", "text": "Frau Kerner geht zweimal in der Woche zum Yoga-Kurs. Für sie ist es am wichtigsten sich zu entspannen. Zu Hause versucht Frau Kerner möglichst täglich ihre Yoga-Übungen zu machen. Aber natürlich hat sie nicht immer Zeit."}]}, {"id": "A14", "title": "14 – Wohnorte", "persons": [{"name": "Familie Schmidt (Düsseldorf)", "text": "Familie Schmidt wohnt in Düsseldorf. Ihre Wohnung ist in einem Hochhaus im 15. Stock. Die Wohnung ist hell, aber nicht besonders groß. Sie hat vier Zimmer, ein Wohnzimmer, ein Schlafzimmer und zwei Zimmer für die Kinder. Die Wohnung kostet sechshundert Euro inklusive Nebenkosten. Das ist sehr günstig."}, {"name": "Tanja und Fabian (Karlsruhe)", "text": "Tanja und Fabian leben in Karlsruhe. Sie haben noch keine Kinder. Sie wohnen zu zweit auf über einhundert Quadratmetern. Das ist ziemlich viel Platz. Die Wohnung ist in einem Altbau und liegt im Zentrum von Karlsruhe. Deshalb brauchen Tanja und Fabian kein Auto. Sie können alles zu Fuß erledigen."}, {"name": "Lu (Stuttgart)", "text": "Lu kommt aus China. Sie wohnt in einem Studentenwohnheim in Stuttgart. Das Zimmer ist sehr klein, aber sie bezahlt nicht so viel. Insgesamt kostet das Zimmer dreihundert Euro inklusive Nebenkosten und Internet. Für Stuttgart ist das sehr billig. Lu fühlt sich in ihrem Zimmer sehr wohl, nur die gemeinsame Küche und die Dusche findet sie manchmal zu schmutzig."}, {"name": "Familie Petri (im Grünen)", "text": "Familie Petri wohnt in einem Einfamilienhaus im Grünen. Das Haus ist ganz neu. Es hat auch zwei Garagen und einen großen Garten. Die Kinder lieben den Garten sehr, denn sie können jetzt immer draußen spielen. Das Haus liegt auch ganz ruhig, denn auf der Straße fahren nur sehr wenige Autos. Deshalb leben Petris gern auf dem Land."}, {"name": "Hasan", "text": "Hasan wohnt erst seit drei Monaten in Deutschland. Er hat ein kleines Zimmer bei einer deutschen Familie. Das Zimmer ist klein, aber Hasan lebt allein und braucht nicht viel Platz. Er freut sich sehr über sein Zimmer, denn in Deutschland ist es nicht leicht ein Zimmer zu finden, das man bezahlen kann."}]}, {"id": "A15", "title": "15 – Deutschland-Reisen", "persons": [{"name": "Anna (Italien → München → Berlin)", "text": "Anna kommt aus Italien. Im Sommer macht sie eine Reise nach Deutschland. Sie spricht nur wenig Deutsch. Zuerst fährt sie nach München. Dort besucht sie ihre Freundin Maria. Anna und Maria gehen zusammen in den Park. Dort trinken sie im Biergarten ein Bier. Anna isst ein halbes Hähnchen. Nach drei Tagen fliegt Anna nach Berlin. In Berlin wohnt sie in einem Hotel. Anna schläft schlecht. Das Hotel ist sehr laut. Aber Berlin gefällt Anna sehr gut."}, {"name": "Clara (Mexiko → Paris → Berlin)", "text": "Clara studiert in Mexiko Wirtschaftswissenschaften. Nach dem Studium reist sie durch Europa. Sie bleibt für zwei Tage in Paris. Dort sieht sie den Eiffelturm und besucht ein Museum. Sie lernt einen französischen Studenten kennen. Er lädt sie zum Mittagessen ein. Am nächsten Tag fährt Clara nach Berlin. In Berlin wohnt sie bei einer mexikanischen Freundin. Aus Berlin schreibt Clara viele Postkarten. Sie fährt mit dem Fahrrad durch Berlin und fotografiert die Berliner Mauer."}]}];
-const SATZBAU_DATA = [{"chips": ["Anke", "trainiert", "viermal", "pro Woche"]}, {"chips": ["Erika", "liest", "jeden Tag", "mindestens zwei Stunden"]}, {"chips": ["Bibi", "geht", "jeden Freitag", "in eine Tanzschule"]}, {"chips": ["Die Wohnung", "kostet", "sechshundert Euro", "inklusive Nebenkosten"]}, {"chips": ["Anna", "fliegt", "nach drei Tagen", "nach Berlin"]}, {"chips": ["Herr Kerner", "geht", "jeden Morgen", "zu Fuß", "zur Arbeit"]}];
-const TIMER_PREFIX = 'luecken-a11-15';
+var WORTSCHATZ = [{"id": 1, "type": "n", "en": "🏅 sport / athletics", "artikel": "der", "de": "Sport", "plural": "Sport"}, {"id": 2, "type": "p", "en": "💪 sporty / athletic", "de": "sportlich"}, {"id": 3, "type": "n", "en": "🎨 hobby", "artikel": "das", "de": "Hobby", "plural": "Hobbys"}, {"id": 4, "type": "n", "en": "🏋️ training session", "artikel": "das", "de": "Training", "plural": "Trainings"}, {"id": 5, "type": "p", "en": "🏋️ to train / practise", "de": "trainieren"}, {"id": 6, "type": "n", "en": "💃 dancing school", "artikel": "die", "de": "Tanzschule", "plural": "Tanzschulen"}, {"id": 7, "type": "n", "en": "💃 dancing teacher (f)", "artikel": "die", "de": "Tanzlehrerin", "plural": "Tanzlehrerinnen"}, {"id": 8, "type": "n", "en": "🎂 birthday", "artikel": "der", "de": "Geburtstag", "plural": "Geburtstage"}, {"id": 9, "type": "n", "en": "📺 series / TV show", "artikel": "die", "de": "Serie", "plural": "Serien"}, {"id": 10, "type": "n", "en": "🏠 apartment / flat", "artikel": "die", "de": "Wohnung", "plural": "Wohnungen"}, {"id": 11, "type": "n", "en": "🚪 room", "artikel": "das", "de": "Zimmer", "plural": "Zimmer"}, {"id": 12, "type": "n", "en": "🏢 apartment block / high-rise", "artikel": "das", "de": "Hochhaus", "plural": "Hochhäuser"}, {"id": 13, "type": "n", "en": "🏢 floor / storey", "artikel": "der", "de": "Stock", "plural": "Stockwerke"}, {"id": 14, "type": "n", "en": "🌳 garden", "artikel": "der", "de": "Garten", "plural": "Gärten"}, {"id": 15, "type": "n", "en": "🏡 house", "artikel": "das", "de": "Haus", "plural": "Häuser"}, {"id": 16, "type": "n", "en": "🏙️ city centre", "artikel": "das", "de": "Zentrum", "plural": "Zentren"}, {"id": 17, "type": "n", "en": "✈️ journey / trip", "artikel": "die", "de": "Reise", "plural": "Reisen"}, {"id": 18, "type": "p", "en": "✈️ to travel", "de": "reisen"}, {"id": 19, "type": "n", "en": "☀️ summer", "artikel": "der", "de": "Sommer", "plural": "Sommer"}, {"id": 20, "type": "n", "en": "🏨 hotel", "artikel": "das", "de": "Hotel", "plural": "Hotels"}, {"id": 21, "type": "n", "en": "🚲 bicycle", "artikel": "das", "de": "Fahrrad", "plural": "Fahrräder"}, {"id": 22, "type": "n", "en": "🥗 nutrition / diet", "artikel": "die", "de": "Ernährung", "plural": "Ernährungen"}, {"id": 23, "type": "n", "en": "🏋️ fitness studio / gym", "artikel": "das", "de": "Fitnessstudio", "plural": "Fitnessstudios"}, {"id": 24, "type": "p", "en": "🧘 to relax", "de": "sich entspannen"}, {"id": 25, "type": "n", "en": "🧘 yoga", "artikel": "das", "de": "Yoga", "plural": "Yoga"}, {"id": 26, "type": "n", "en": "👶👶 twins", "artikel": "die", "de": "Zwillinge", "plural": "Zwillinge"}, {"id": 27, "type": "n", "en": "👴 grandchild / grandchildren", "artikel": "der", "de": "Enkel", "plural": "Enkel"}, {"id": 28, "type": "p", "en": "🧑 adult / grown-up", "de": "erwachsen"}, {"id": 29, "type": "n", "en": "🏥 doctor's practice", "artikel": "die", "de": "Arztpraxis", "plural": "Arztpraxen"}, {"id": 30, "type": "n", "en": "👶 nursery / kindergarten", "artikel": "der", "de": "Kindergarten", "plural": "Kindergärten"}];
+var GENUS_NOUNS = [{"id": 1, "type": "n", "en": "sport / athletics", "artikel": "der", "de": "Sport", "plural": "Sport"}, {"id": 3, "type": "n", "en": "hobby", "artikel": "das", "de": "Hobby", "plural": "Hobbys"}, {"id": 4, "type": "n", "en": "training session", "artikel": "das", "de": "Training", "plural": "Trainings"}, {"id": 6, "type": "n", "en": "dancing school", "artikel": "die", "de": "Tanzschule", "plural": "Tanzschulen"}, {"id": 7, "type": "n", "en": "dancing teacher (f)", "artikel": "die", "de": "Tanzlehrerin", "plural": "Tanzlehrerinnen"}, {"id": 8, "type": "n", "en": "birthday", "artikel": "der", "de": "Geburtstag", "plural": "Geburtstage"}, {"id": 9, "type": "n", "en": "series / TV show", "artikel": "die", "de": "Serie", "plural": "Serien"}, {"id": 10, "type": "n", "en": "apartment / flat", "artikel": "die", "de": "Wohnung", "plural": "Wohnungen"}, {"id": 11, "type": "n", "en": "room", "artikel": "das", "de": "Zimmer", "plural": "Zimmer"}, {"id": 12, "type": "n", "en": "apartment block / high-rise", "artikel": "das", "de": "Hochhaus", "plural": "Hochhäuser"}, {"id": 13, "type": "n", "en": "floor / storey", "artikel": "der", "de": "Stock", "plural": "Stockwerke"}, {"id": 14, "type": "n", "en": "garden", "artikel": "der", "de": "Garten", "plural": "Gärten"}, {"id": 15, "type": "n", "en": "house", "artikel": "das", "de": "Haus", "plural": "Häuser"}, {"id": 16, "type": "n", "en": "city centre", "artikel": "das", "de": "Zentrum", "plural": "Zentren"}, {"id": 17, "type": "n", "en": "journey / trip", "artikel": "die", "de": "Reise", "plural": "Reisen"}, {"id": 19, "type": "n", "en": "summer", "artikel": "der", "de": "Sommer", "plural": "Sommer"}, {"id": 20, "type": "n", "en": "hotel", "artikel": "das", "de": "Hotel", "plural": "Hotels"}, {"id": 21, "type": "n", "en": "bicycle", "artikel": "das", "de": "Fahrrad", "plural": "Fahrräder"}, {"id": 22, "type": "n", "en": "nutrition / diet", "artikel": "die", "de": "Ernährung", "plural": "Ernährungen"}, {"id": 23, "type": "n", "en": "fitness studio / gym", "artikel": "das", "de": "Fitnessstudio", "plural": "Fitnessstudios"}, {"id": 25, "type": "n", "en": "yoga", "artikel": "das", "de": "Yoga", "plural": "Yoga"}, {"id": 26, "type": "n", "en": "twins", "artikel": "die", "de": "Zwillinge", "plural": "Zwillinge"}, {"id": 27, "type": "n", "en": "grandchild / grandchildren", "artikel": "der", "de": "Enkel", "plural": "Enkel"}, {"id": 29, "type": "n", "en": "doctor's practice", "artikel": "die", "de": "Arztpraxis", "plural": "Arztpraxen"}, {"id": 30, "type": "n", "en": "nursery / kindergarten", "artikel": "der", "de": "Kindergarten", "plural": "Kindergärten"}];
+var LUECKEN_DATA = [{"id": "A11", "title": "11 – Anke, Erika und Bibi stellen sich vor", "persons": [{"name": "Anke", "text": "Hallo, mein Name ist Anke. Ich bin sehr sportlich. Ich bin jetzt siebzehn Jahre alt. Ich habe im Januar Geburtstag. Mein Hobby ist Judo. Ich mache das seit ich zehn Jahre alt bin. Ich trainiere viermal pro Woche. Außerdem gehe ich regelmäßig joggen und fahre immer mit dem Fahrrad."}, {"name": "Erika", "text": "Hallo, ich bin Erika. Ich bin nicht so sportlich. Ich lese lieber und sehe fern, am liebsten Serien. Ich lese jeden Tag mindestens zwei Stunden. Ich möchte später Literatur studieren und vielleicht Schriftstellerin werden. In drei Wochen werde ich auch siebzehn."}, {"name": "Bibi", "text": "Ich heiße Bibi. Anke und Erika sind meine Freundinnen. Wir wohnen in Darmstadt. Das liegt etwa fünfunddreißig Kilometer südlich von Frankfurt. Meine Hobbys sind Tanzen und Reisen. Ich gehe jeden Freitag in eine Tanzschule. Ich möchte vielleicht Tanzlehrerin werden. Ich bin noch sechzehn, aber ich habe bald Geburtstag."}]}, {"id": "A12", "title": "12 – Eltern, Geschwister und Kinder (II)", "persons": [{"name": "Maik und Peggy Krause", "text": "Maik und Peggy Krause wohnen in Cottbus. Das liegt etwa 130 Kilometer südöstlich von Berlin. Maik ist Lehrer von Beruf. Seine Frau Peggy arbeitet in einem Kindergarten. Sie haben zwei Kinder, einen Sohn und eine Tochter. Die Kinder sind noch klein. Ihr Sohn ist fünf Jahre alt und ihre Tochter drei."}, {"name": "Familie Kramer", "text": "Familie Kramer wohnt in Emden. Das liegt im Norden von Deutschland. Herr Kramer ist Arzt und seine Frau ist Ärztin. Sie haben zusammen eine Arztpraxis. Herr und Frau Kramer haben vier Kinder, zwei Mädchen und zwei Jungen. Die Mädchen sind siebzehn und dreizehn Jahre alt. Die Jungen sind Zwillinge. Sie sind acht Jahre alt."}, {"name": "Helmut und Klara Häberle", "text": "Helmut und Klara Häberle wohnen in Tübingen. Das liegt in Süddeutschland, ungefähr 40 Kilometer südlich von Stuttgart. Helmut und Klara sind schon über 50 Jahre verheiratet. Jetzt sind sie beide pensioniert. Helmut hat früher als Hausmeister an der Universität gearbeitet. Klara war Putzfrau und hat sich um die Kinder gekümmert. Die Häberles haben drei Kinder. Die Kinder sind schon lange erwachsen. Sie sind alle verheiratet und haben selbst Kinder. Insgesamt haben die Häberles sieben Enkel."}]}, {"id": "A13", "title": "13 – Eine sportliche Familie", "persons": [{"name": "Sonja (Ballett)", "text": "Tochter Sonja geht zum Ballett. Sie tanzt seit sie fünf Jahre alt ist. Sie achtet sehr auf ihre Ernährung und ihr Gewicht. Sie geht auch früh ins Bett, trinkt keinen Alkohol und raucht natürlich auch nicht. Wenn sie kein Ballett-Training hat, geht sie auch gern schwimmen."}, {"name": "Max (Fußball)", "text": "Sohn Max spielt Fußball. Er geht viermal pro Woche zum Training, denn er möchte Profifußballer werden. Zum Training fährt er immer viele Kilometer mit dem Fahrrad. Wenn er kein Training hat, geht er zum Joggen in den Wald oder spielt mit Freunden auf der Straße. Ein Leben ohne Fußball kann sich Max nicht vorstellen."}, {"name": "Herr Kerner (Fitness)", "text": "Herr Kerner hat eine Jahreskarte für das Fitnessstudio. So oft wie möglich geht er nach der Arbeit ins Studio. Er macht Krafttraining oder er versucht seine Kondition mit Laufen oder Fahrradfahren zu verbessern. Nach dem Training geht er zur Entspannung gerne noch eine Weile in die Sauna. Außerdem geht Herr Kerner jeden Morgen eine halbe Stunde zu Fuß zur Arbeit."}, {"name": "Frau Kerner (Yoga)", "text": "Frau Kerner geht zweimal in der Woche zum Yoga-Kurs. Für sie ist es am wichtigsten sich zu entspannen. Zu Hause versucht Frau Kerner möglichst täglich ihre Yoga-Übungen zu machen. Aber natürlich hat sie nicht immer Zeit."}]}, {"id": "A14", "title": "14 – Wohnorte", "persons": [{"name": "Familie Schmidt (Düsseldorf)", "text": "Familie Schmidt wohnt in Düsseldorf. Ihre Wohnung ist in einem Hochhaus im 15. Stock. Die Wohnung ist hell, aber nicht besonders groß. Sie hat vier Zimmer, ein Wohnzimmer, ein Schlafzimmer und zwei Zimmer für die Kinder. Die Wohnung kostet sechshundert Euro inklusive Nebenkosten. Das ist sehr günstig."}, {"name": "Tanja und Fabian (Karlsruhe)", "text": "Tanja und Fabian leben in Karlsruhe. Sie haben noch keine Kinder. Sie wohnen zu zweit auf über einhundert Quadratmetern. Das ist ziemlich viel Platz. Die Wohnung ist in einem Altbau und liegt im Zentrum von Karlsruhe. Deshalb brauchen Tanja und Fabian kein Auto. Sie können alles zu Fuß erledigen."}, {"name": "Lu (Stuttgart)", "text": "Lu kommt aus China. Sie wohnt in einem Studentenwohnheim in Stuttgart. Das Zimmer ist sehr klein, aber sie bezahlt nicht so viel. Insgesamt kostet das Zimmer dreihundert Euro inklusive Nebenkosten und Internet. Für Stuttgart ist das sehr billig. Lu fühlt sich in ihrem Zimmer sehr wohl, nur die gemeinsame Küche und die Dusche findet sie manchmal zu schmutzig."}, {"name": "Familie Petri (im Grünen)", "text": "Familie Petri wohnt in einem Einfamilienhaus im Grünen. Das Haus ist ganz neu. Es hat auch zwei Garagen und einen großen Garten. Die Kinder lieben den Garten sehr, denn sie können jetzt immer draußen spielen. Das Haus liegt auch ganz ruhig, denn auf der Straße fahren nur sehr wenige Autos. Deshalb leben Petris gern auf dem Land."}, {"name": "Hasan", "text": "Hasan wohnt erst seit drei Monaten in Deutschland. Er hat ein kleines Zimmer bei einer deutschen Familie. Das Zimmer ist klein, aber Hasan lebt allein und braucht nicht viel Platz. Er freut sich sehr über sein Zimmer, denn in Deutschland ist es nicht leicht ein Zimmer zu finden, das man bezahlen kann."}]}, {"id": "A15", "title": "15 – Deutschland-Reisen", "persons": [{"name": "Anna (Italien → München → Berlin)", "text": "Anna kommt aus Italien. Im Sommer macht sie eine Reise nach Deutschland. Sie spricht nur wenig Deutsch. Zuerst fährt sie nach München. Dort besucht sie ihre Freundin Maria. Anna und Maria gehen zusammen in den Park. Dort trinken sie im Biergarten ein Bier. Anna isst ein halbes Hähnchen. Nach drei Tagen fliegt Anna nach Berlin. In Berlin wohnt sie in einem Hotel. Anna schläft schlecht. Das Hotel ist sehr laut. Aber Berlin gefällt Anna sehr gut."}, {"name": "Clara (Mexiko → Paris → Berlin)", "text": "Clara studiert in Mexiko Wirtschaftswissenschaften. Nach dem Studium reist sie durch Europa. Sie bleibt für zwei Tage in Paris. Dort sieht sie den Eiffelturm und besucht ein Museum. Sie lernt einen französischen Studenten kennen. Er lädt sie zum Mittagessen ein. Am nächsten Tag fährt Clara nach Berlin. In Berlin wohnt sie bei einer mexikanischen Freundin. Aus Berlin schreibt Clara viele Postkarten. Sie fährt mit dem Fahrrad durch Berlin und fotografiert die Berliner Mauer."}]}];
+var satzbauData = [{"parts": ["Anke", "trainiert", "viermal", "pro Woche"], "valid": [["Anke", "trainiert", "viermal", "pro Woche"]], "punct": "."}, {"parts": ["Erika", "liest", "jeden Tag", "mindestens zwei Stunden"], "valid": [["Erika", "liest", "jeden Tag", "mindestens zwei Stunden"]], "punct": "."}, {"parts": ["Bibi", "geht", "jeden Freitag", "in eine Tanzschule"], "valid": [["Bibi", "geht", "jeden Freitag", "in eine Tanzschule"]], "punct": "."}, {"parts": ["Die Wohnung", "kostet", "sechshundert Euro", "inklusive Nebenkosten"], "valid": [["Die Wohnung", "kostet", "sechshundert Euro", "inklusive Nebenkosten"]], "punct": "."}, {"parts": ["Anna", "fliegt", "nach drei Tagen", "nach Berlin"], "valid": [["Anna", "fliegt", "nach drei Tagen", "nach Berlin"]], "punct": "."}, {"parts": ["Herr Kerner", "geht", "jeden Morgen", "zu Fuß", "zur Arbeit"], "valid": [["Herr Kerner", "geht", "jeden Morgen", "zu Fuß", "zur Arbeit"]], "punct": "."}];
+var TIMER_PREFIX = 'luecken-a11-15';
 
 // ── NAVIGATION ────────────────────────────────────────
 function showSection(idx) {
@@ -238,7 +277,7 @@ function showSection(idx) {
 function toggleHelp(id) { document.getElementById(id).classList.toggle('show'); }
 
 // ── TIMER ─────────────────────────────────────────────
-const timerState = {};
+var timerState = {};
 function initTimer(idx) { timerState[idx] = { interval: null, seconds: 0, running: false, stopped: false }; }
 function startTimer(idx) {
     const s = timerState[idx];
@@ -248,6 +287,11 @@ function startTimer(idx) {
         s.seconds++;
         document.getElementById('timer-' + idx).textContent = formatTime(s.seconds);
     }, 1000);
+}
+function timerAutoStart(idx) {
+    var s = timerState[idx];
+    if (!s || s.running || s.stopped) return;
+    startTimer(idx);
 }
 function stopTimer(idx) {
     const s = timerState[idx];
@@ -278,50 +322,93 @@ function loadBestTimes() {
 }
 
 // ── WORTSCHATZ ────────────────────────────────────────
-function liveCheck(inp) {
-    var user = inp.value, answer = inp.dataset.answer, field = inp.dataset.field;
-    inp.classList.remove('correct','wrong');
+function wortschatzCheck(inp) {
+    var user = inp.value;
+    var answer = inp.dataset.answer;
+    inp.classList.remove('correct', 'wrong');
     if (!user) return;
-    var cu = field === 'artikel' ? user : user;
-    var ca = field === 'artikel' ? answer : answer;
-    if (cu === ca) inp.classList.add('correct');
-    else if (!ca.startsWith(cu)) inp.classList.add('wrong');
+    var cmpUser = user.trim();
+    var cmpAnswer = answer;
+    if (cmpUser === cmpAnswer) { inp.classList.add('correct'); }
+    else if (cmpAnswer.indexOf(cmpUser) === 0) { /* prefix — neutral */ }
+    else { inp.classList.add('wrong'); }
 }
-function checkAllWS() {
-    var inputs = document.querySelectorAll('.ws-input');
-    if ([...inputs].every(i => i.classList.contains('correct'))) stopTimer(0);
+function checkWortschatzAllOk() {
+    var inputs = document.querySelectorAll('#sec-0 input.blank');
+    var allOk = inputs.length > 0 && Array.from(inputs).every(function(i) {
+        return i.disabled || i.classList.contains('correct');
+    });
+    if (allOk) stopTimer(0);
 }
-function initWS() {
-    const c = document.getElementById('wsContainer'); c.innerHTML = '';
+function initWortschatz() {
+    var container = document.getElementById('wortschatzContainer');
+    container.innerHTML = '';
     initTimer(0);
-    [...WORTSCHATZ].sort(() => Math.random() - 0.5).forEach(item => {
-        const row = document.createElement('div'); row.className = 'ws-item';
-        const p = document.createElement('div'); p.className = 'ws-prompt'; p.textContent = item.en; row.appendChild(p);
-        const f = document.createElement('div'); f.className = 'ws-fields';
-        function makeInput(cls, ph, ans, field) {
-            const inp = document.createElement('input'); inp.className = 'ws-input ' + cls;
-            inp.placeholder = ph; inp.dataset.answer = ans; inp.dataset.field = field;
-            inp.onfocus = () => startTimer(0);
-            inp.oninput = function() { liveCheck(this); checkAllWS(); };
-            return inp;
-        }
+    var shuffled = WORTSCHATZ.slice().sort(function() { return Math.random() - 0.5; });
+    shuffled.forEach(function(item) {
+        var row = document.createElement('div');
+        row.className = 'luecken-item';
+        row.style.marginBottom = '0';
+        var prompt = document.createElement('div');
+        prompt.style.cssText = 'font-weight:600; color:#667eea; margin-bottom:6px; font-size:1.05em;';
+        prompt.textContent = item.en;
+        row.appendChild(prompt);
+        var fields = document.createElement('div');
+        fields.style.cssText = 'display:flex; gap:8px; flex-wrap:wrap; align-items:center;';
         if (item.type === 'n') {
-            f.appendChild(makeInput('artikel','Artikel', item.artikel, 'artikel'));
-            f.appendChild(makeInput('','Deutsch', item.de, 'word'));
-            f.appendChild(makeInput('plural','Plural', item.plural, 'plural'));
+            var artInp = document.createElement('input');
+            artInp.className = 'blank'; artInp.type = 'text';
+            artInp.placeholder = 'Artikel'; artInp.style.width = '70px';
+            artInp.dataset.answer = item.artikel; artInp.dataset.field = 'art';
+            artInp.oninput = function() { wortschatzCheck(this); timerAutoStart(0); checkWortschatzAllOk(); };
+            fields.appendChild(artInp);
+            var wordInp = document.createElement('input');
+            wordInp.className = 'blank'; wordInp.type = 'text';
+            wordInp.placeholder = 'Wort'; wordInp.style.width = '160px';
+            wordInp.dataset.answer = item.de; wordInp.dataset.field = 'word';
+            wordInp.oninput = function() { wortschatzCheck(this); timerAutoStart(0); checkWortschatzAllOk(); };
+            fields.appendChild(wordInp);
+            var plInp = document.createElement('input');
+            plInp.className = 'blank'; plInp.type = 'text';
+            plInp.placeholder = 'Plural'; plInp.style.width = '140px';
+            plInp.dataset.answer = item.plural; plInp.dataset.field = 'plural';
+            if (item.plural === '\u2013') {
+                plInp.value = '\u2013';
+                plInp.disabled = true;
+                plInp.classList.add('correct');
+                plInp.style.opacity = '0.6';
+                plInp.title = 'Dieses Wort hat keinen Plural';
+            } else {
+                plInp.oninput = function() { wortschatzCheck(this); timerAutoStart(0); checkWortschatzAllOk(); };
+            }
+            fields.appendChild(plInp);
         } else {
-            f.appendChild(makeInput('','Deutsch', item.de, 'word'));
+            var inp = document.createElement('input');
+            inp.className = 'blank'; inp.type = 'text';
+            inp.placeholder = 'Deutsch'; inp.style.width = '220px';
+            inp.dataset.answer = item.de; inp.dataset.field = 'word';
+            inp.oninput = function() { wortschatzCheck(this); timerAutoStart(0); checkWortschatzAllOk(); };
+            fields.appendChild(inp);
         }
-        row.appendChild(f); c.appendChild(row);
+        row.appendChild(fields);
+        container.appendChild(row);
     });
 }
-function showWSLoesung() {
-    document.querySelectorAll('.ws-input').forEach(inp => {
-        inp.value = inp.dataset.answer; inp.classList.add('solved');
-    });
+function showWortschatzLoesung() {
     stopTimer(0);
+    document.querySelectorAll('#sec-0 input.blank').forEach(function(inp) {
+        inp.value = inp.dataset.answer;
+        inp.classList.add('correct'); inp.classList.remove('wrong');
+    });
 }
-function resetWS() { initWS(); resetTimer(0); }
+function resetWortschatz() {
+    document.querySelectorAll('#sec-0 input.blank').forEach(function(inp) {
+        if (!inp.disabled) {
+            inp.value = ''; inp.classList.remove('correct', 'wrong');
+        }
+    });
+    resetTimer(0);
+}
 
 // ── GENUS ─────────────────────────────────────────────
 let genusSelected = null;
@@ -459,77 +546,228 @@ function showLueckenLoesung() {
 function resetLuecken() { buildLuecken(); resetTimer(2); }
 
 // ── SATZBAU ───────────────────────────────────────────
-let sbDragged = null;
-function initSatzbau() {
-    initTimer(3);
-    const c = document.getElementById('satzbauContainer'); c.innerHTML = '';
-    SATZBAU_DATA.forEach((item, idx) => {
-        const block = document.createElement('div'); block.className = 'satzbau-item';
-        const drop = document.createElement('div'); drop.className = 'drop-row'; drop.dataset.idx = idx;
-        drop.ondragover = e => e.preventDefault();
-        drop.ondrop = e => { e.preventDefault(); if (sbDragged) { drop.appendChild(sbDragged); sbDragged = null; checkSatzbau(idx); } };
-        block.appendChild(drop);
-        const bank = document.createElement('div'); bank.className = 'chip-bank'; bank.dataset.idx = idx;
-        bank.ondragover = e => e.preventDefault();
-        bank.ondrop = e => { e.preventDefault(); if (sbDragged) { bank.appendChild(sbDragged); sbDragged = null; } };
-        [...item.chips].sort(() => Math.random() - 0.5).forEach(word => {
-            const chip = document.createElement('div'); chip.className = 'chip'; chip.textContent = word;
-            chip.draggable = true;
-            chip.ondragstart = () => { sbDragged = chip; chip.classList.add('placed'); };
-            chip.ondragend = () => chip.classList.remove('placed');
-            chip.onclick = () => {
-                if (chip.closest('.drop-row')) bank.appendChild(chip);
-                else drop.appendChild(chip);
-                checkSatzbau(idx);
-            };
-            bank.appendChild(chip);
-        });
-        block.appendChild(bank);
-        const fb = document.createElement('div'); fb.id = 'sb-fb-' + idx;
-        fb.style.cssText = 'margin-top:8px;font-size:0.9em;font-weight:600;min-height:1.4em;';
-        block.appendChild(fb);
-        c.appendChild(block);
+var sbDragged = null;
+
+function getSbCursor() {
+    var c = document.getElementById('sb-insert-cursor');
+    if (!c) {
+        c = document.createElement('div');
+        c.id = 'sb-insert-cursor';
+        c.style.cssText = 'width:3px;min-height:32px;background:#e67e22;border-radius:2px;align-self:stretch;pointer-events:none;flex-shrink:0;';
+    }
+    return c;
+}
+
+function getSbInsertPos(zone, clientX) {
+    var chips = Array.from(zone.querySelectorAll('.chip'));
+    for (var i = 0; i < chips.length; i++) {
+        var r = chips[i].getBoundingClientRect();
+        if (clientX < r.left + r.width / 2) return chips[i];
+    }
+    return null;
+}
+
+function sbCapitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function sbUpdateCapitalization(row) {
+    var chips = Array.from(row.querySelectorAll('.chip'));
+    chips.forEach(function(c, i) {
+        var orig = c.dataset.orig;
+        var isProper = orig.charAt(0) === orig.charAt(0).toUpperCase()
+                    && orig.charAt(0) !== orig.charAt(0).toLowerCase();
+        if (isProper) {
+            c.textContent = orig;
+        } else {
+            c.textContent = (i === 0) ? sbCapitalize(orig) : orig;
+        }
     });
 }
-function checkSatzbau(idx) {
-    const drop = document.querySelector('.drop-row[data-idx="' + idx + '"]');
-    const chips = [...drop.querySelectorAll('.chip')].map(c => c.textContent);
-    const sol = SATZBAU_DATA[idx].chips;
-    const fb = document.getElementById('sb-fb-' + idx);
-    if (chips.length === sol.length && chips.every((c,i) => c === sol[i])) {
-        fb.textContent = '✅ Richtig!'; fb.style.color = '#27ae60';
-        drop.querySelectorAll('.chip').forEach(c => { c.classList.add('correct'); c.draggable = false; });
-        if ([...document.querySelectorAll('.drop-row')].every((dr, i) => {
-            const ch = [...dr.querySelectorAll('.chip')].map(c => c.textContent);
-            return ch.length === SATZBAU_DATA[i].chips.length && ch.every((c,j) => c === SATZBAU_DATA[i].chips[j]);
-        })) stopTimer(3);
-    } else if (chips.length === sol.length) {
-        fb.textContent = '❌ Noch nicht ganz richtig.'; fb.style.color = '#e74c3c';
-    } else {
-        fb.textContent = ''; 
+
+function sbMakeChip(word) {
+    var chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = word;
+    chip.dataset.orig = word;
+    chip.draggable = true;
+    chip.addEventListener('dragstart', function(e) {
+        sbDragged = chip;
+        e.dataTransfer.setData('text/plain', '');
+        setTimeout(function() { chip.style.opacity = '0.4'; }, 0);
+    });
+    chip.addEventListener('dragend', function() {
+        chip.style.opacity = '';
+        sbDragged = null;
+        var c = document.getElementById('sb-insert-cursor');
+        if (c && c.parentNode) c.parentNode.removeChild(c);
+    });
+    return chip;
+}
+
+function sbRegisterZone(zone, idx) {
+    zone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        if (!sbDragged) return;
+        var cursor = getSbCursor();
+        var before = getSbInsertPos(zone, e.clientX);
+        if (before) zone.insertBefore(cursor, before);
+        else zone.appendChild(cursor);
+    });
+    zone.addEventListener('dragleave', function(e) {
+        if (!zone.contains(e.relatedTarget)) {
+            var c = document.getElementById('sb-insert-cursor');
+            if (c && c.parentNode === zone) zone.removeChild(c);
+        }
+    });
+    zone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        if (!sbDragged) return;
+        var cursor = document.getElementById('sb-insert-cursor');
+        if (cursor && cursor.parentNode === zone) {
+            zone.insertBefore(sbDragged, cursor);
+            zone.removeChild(cursor);
+        } else {
+            zone.appendChild(sbDragged);
+        }
+        sbDragged = null;
+        var row = document.getElementById('sb-row-' + idx);
+        sbUpdateCapitalization(row);
+        sbCheckAuto(idx);
+    });
+}
+
+function sbColorRow(idx) {
+    var row = document.getElementById('sb-row-' + idx);
+    var chips = Array.from(row.querySelectorAll('.chip'));
+    var order = chips.map(function(c) { return c.dataset.orig; });
+    var ok = satzbauData[idx].valid.some(function(v) {
+        return JSON.stringify(v) === JSON.stringify(order);
+    });
+    chips.forEach(function(c) {
+        c.classList.remove('correct', 'incorrect');
+        c.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    var existing = row.querySelector('.sb-punkt');
+    if (existing) existing.parentNode.removeChild(existing);
+    if (ok) {
+        var punkt = document.createElement('span');
+        punkt.className = 'sb-punkt';
+        punkt.textContent = satzbauData[idx].punct || '.';
+        row.appendChild(punkt);
+    }
+    return ok;
+}
+
+function sbCheckAuto(idx) {
+    var bank = document.getElementById('sb-bank-' + idx);
+    var row  = document.getElementById('sb-row-' + idx);
+    var fb   = document.getElementById('sb-fb-' + idx);
+    if (bank.querySelectorAll('.chip').length > 0) {
+        row.querySelectorAll('.chip').forEach(function(c) {
+            c.classList.remove('correct', 'incorrect');
+        });
+        row.classList.remove('correct', 'incorrect');
+        fb.textContent = '';
+        return;
+    }
+    setTimeout(function() {
+        timerAutoStart(3);
+        var ok = sbColorRow(idx);
+        if (ok) {
+            row.classList.add('correct'); row.classList.remove('incorrect');
+            fb.className = 'satzbau-feedback correct';
+            fb.textContent = '\u2713 Korrekt!';
+            sbCheckAllDone();
+        } else {
+            row.classList.add('incorrect'); row.classList.remove('correct');
+            fb.className = 'satzbau-feedback incorrect';
+            fb.textContent = '\u2717 Falsche Reihenfolge \u2013 verschiebe die Chips!';
+        }
+    }, 500);
+}
+
+function sbCheckAllDone() {
+    var allOk = satzbauData.every(function(_, i) {
+        var row = document.getElementById('sb-row-' + i);
+        return row && row.classList.contains('correct');
+    });
+    if (allOk) stopTimer(3);
+}
+
+function sbShowSolution(idx) {
+    var bank = document.getElementById('sb-bank-' + idx);
+    var row  = document.getElementById('sb-row-' + idx);
+    var fb   = document.getElementById('sb-fb-' + idx);
+    var solution = satzbauData[idx].valid[0];
+    var allChips = {};
+    Array.from(bank.querySelectorAll('.chip')).forEach(function(c) {
+        if (!allChips[c.dataset.orig]) allChips[c.dataset.orig] = [];
+        allChips[c.dataset.orig].push(c);
+    });
+    Array.from(row.querySelectorAll('.chip')).forEach(function(c) {
+        if (!allChips[c.dataset.orig]) allChips[c.dataset.orig] = [];
+        allChips[c.dataset.orig].push(c);
+    });
+    while (bank.firstChild) bank.removeChild(bank.firstChild);
+    while (row.firstChild) row.removeChild(row.firstChild);
+    solution.forEach(function(word, i) {
+        var arr = allChips[word];
+        if (arr && arr.length > 0) {
+            var chip = arr.shift();
+            chip.textContent = (i === 0) ? sbCapitalize(word) : word;
+            chip.classList.remove('correct', 'incorrect');
+            row.appendChild(chip);
+        }
+    });
+    fb.textContent = '';
+    setTimeout(function() { sbCheckAuto(idx); }, 100);
+}
+
+function sbShowAllSolutions() {
+    for (var i = 0; i < satzbauData.length; i++) {
+        sbShowSolution(i);
     }
 }
-function showSatzbauLoesung() {
-    SATZBAU_DATA.forEach((item, idx) => {
-        const drop = document.querySelector('.drop-row[data-idx="' + idx + '"]');
-        const bank = document.querySelector('.chip-bank[data-idx="' + idx + '"]');
-        drop.innerHTML = '';
-        item.chips.forEach(word => {
-            const chip = document.createElement('div'); chip.className = 'chip correct'; chip.textContent = word;
-            drop.appendChild(chip);
+
+function initSatzbau() {
+    initTimer(3);
+    satzbauData.forEach(function(ex, idx) {
+        var bank = document.getElementById('sb-bank-' + idx);
+        var row  = document.getElementById('sb-row-' + idx);
+        if (!bank || !row) return;
+        bank.innerHTML = ''; row.innerHTML = '';
+        var parts = ex.parts.slice();
+        for (var i = parts.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = parts[i]; parts[i] = parts[j]; parts[j] = tmp;
+        }
+        parts.forEach(function(word) {
+            bank.appendChild(sbMakeChip(word));
         });
-        bank.innerHTML = '';
-        document.getElementById('sb-fb-' + idx).textContent = '✅ Lösung';
-        document.getElementById('sb-fb-' + idx).style.color = '#27ae60';
+        sbRegisterZone(bank, idx);
+        sbRegisterZone(row, idx);
     });
-    stopTimer(3);
 }
-function resetSatzbau() { initSatzbau(); resetTimer(3); }
+
+function resetSatzbau() {
+    satzbauData.forEach(function(_, idx) {
+        var bank = document.getElementById('sb-bank-' + idx);
+        var row  = document.getElementById('sb-row-' + idx);
+        var fb   = document.getElementById('sb-fb-' + idx);
+        if (bank) bank.innerHTML = '';
+        if (row) { row.innerHTML = ''; row.classList.remove('correct', 'incorrect'); }
+        if (fb) { fb.textContent = ''; fb.className = 'satzbau-feedback'; }
+    });
+    initSatzbau();
+    resetTimer(3);
+}
+
 
 // ── INIT ──────────────────────────────────────────────
 window.addEventListener('load', () => {
     loadBestTimes();
-    initWS();
+    initWortschatz();
     initGenus();
     buildLuecken();
     initSatzbau();
