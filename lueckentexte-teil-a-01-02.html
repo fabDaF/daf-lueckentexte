@@ -504,19 +504,19 @@ var GENUS_DATA = [
   { word: "Deutsch", cat: "das" },
   { word: "Englisch", cat: "das" },
   { word: "Russisch", cat: "das" },
-  { word: "Namen", cat: "pl" },
-  { word: "Studentinnen", cat: "pl" },
-  { word: "Fotografen", cat: "pl" },
-  { word: "Ingenieurinnen", cat: "pl" },
-  { word: "Freundinnen", cat: "pl" },
-  { word: "Spalte", cat: "die" },
-  { word: "Lösungen", cat: "pl" },
-  { word: "Satzglieder", cat: "pl" },
-  { word: "Sprache", cat: "die" },
-  { word: "Satz", cat: "der" },
-  { word: "Wort", cat: "das" },
-  { word: "Ausland", cat: "das" },
-  { word: "Schule", cat: "die" }
+  { word: "📛 Namen", cat: "pl" },
+  { word: "👩‍🎓 Studentinnen", cat: "pl" },
+  { word: "📷 Fotografen", cat: "pl" },
+  { word: "👩‍🔧 Ingenieurinnen", cat: "pl" },
+  { word: "👩 Freundinnen", cat: "pl" },
+  { word: "📎 Spalte", cat: "die" },
+  { word: "📋 Lösungen", cat: "pl" },
+  { word: "📎 Satzglieder", cat: "pl" },
+  { word: "📖 Sprache", cat: "die" },
+  { word: "✏️ Satz", cat: "der" },
+  { word: "📝 Wort", cat: "das" },
+  { word: "🌍 Ausland", cat: "das" },
+  { word: "🏫 Schule", cat: "die" }
 ];
 
 let selectedGenusChip = null;
@@ -1300,8 +1300,7 @@ window.addEventListener('DOMContentLoaded', init);
     wrap.className = "fb-wortbank-wrap";
     var label = document.createElement("div");
     label.className = "fb-wortbank-label";
-    label.innerHTML = "🔤 Wortbank – die richtigen Wörter, in zufälliger Reihenfolge.<br>" +
-      "Tipp sie selbst in die Lücken — achte auf Groß- und Kleinschreibung.";
+    label.innerHTML = "🔤 Wortbank – die richtigen Wörter, in zufälliger Reihenfolge.";
     bank = document.createElement("div");
     bank.className = "fb-wortbank";
     wrap.appendChild(label);
