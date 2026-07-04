@@ -176,10 +176,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
         <div class="card">
             <h2>📝 Wortschatz: Englisch → Deutsch</h2>
             <button class="help-toggle" onclick="toggleHelp('wsHelp')">💡 Hilfe</button>
-            <div class="help-box" id="wsHelp">
-                Bei Nomen: Schreibe den Artikel (der/die/das), das deutsche Wort und den Plural.<br>
-                Bei Verben und Adjektiven: Schreibe nur das deutsche Wort.
-            </div>
+
             <div id="wortschatzContainer"></div>
             <div class="btn-row">
                 <button onclick="showWortschatzLoesung()" style="background:#f5f7ff;border:1px solid #c5cff5;border-radius:8px;padding:6px 16px;font-size:0.85em;color:#667eea;cursor:pointer;font-weight:600;">💡 Lösungen</button>
@@ -199,10 +196,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
         <div class="card">
             <h2>🔀 Genus: der, die oder das?</h2>
             <button class="help-toggle" onclick="toggleHelp('genusHelp')">💡 Hilfe</button>
-            <div class="help-box" id="genusHelp">
-                Ziehe jedes Nomen in die richtige Spalte (der/die/das).<br>
-                Auf Mobilgeräten: Tippe auf ein Wort und dann auf die Spalte.
-            </div>
+
             <div class="genus-categories">
                 <div class="genus-cat" data-cat="der" ondrop="dropGenus(event)" ondragover="allowDrop(event)">
                     <div class="genus-cat-title">der</div>
@@ -233,11 +227,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
         <div class="card">
             <h2>✏️ Lückentext: Buchstaben ergänzen</h2>
             <button class="help-toggle" onclick="toggleHelp('lueckenHelp')">💡 Hilfe</button>
-            <div class="help-box" id="lueckenHelp">
-                Ergänze die fehlenden Buchstaben. Jedes kleine Feld = ein Buchstabe.<br>
-                Der Cursor springt automatisch zum nächsten Feld.<br>
-                Tipp: Lies den ersten Satz und den Titel – sie geben den Kontext!
-            </div>
+
             <div id="lueckenContainer"></div>
             <div class="btn-row">
                 <button onclick="showLueckenLoesung()" style="background:#f5f7ff;border:1px solid #c5cff5;border-radius:8px;padding:6px 16px;font-size:0.85em;color:#667eea;cursor:pointer;font-weight:600;">💡 Lösungen</button>
@@ -257,11 +247,7 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
         <div class="card">
             <h2>🧩 Satzbau: Sätze ordnen</h2>
             <button class="help-toggle" onclick="toggleHelp('sbHelp')">💡 Hilfe</button>
-            <div class="help-box" id="sbHelp">
-                Bringe die Satzglieder in die richtige Reihenfolge.<br>
-                🔹 Das Verb steht immer auf Position 2.<br>
-                🔹 Standard: Subjekt – Verb – Rest
-            </div>
+
             <div style="margin-bottom:18px;">
 <button onclick="document.getElementById('sb-help-0').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-0"></div>
