@@ -99,8 +99,6 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
 .satzbau-feedback.incorrect { color: #e74c3c; }
 
 /* Help box */
-.help-toggle { background: none; border: 2px solid #667eea; color: #667eea; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85em; font-weight: 600; margin-bottom: 12px; }
-.help-toggle:hover { background: #667eea; color: white; }
 .help-box { display: none; background: #f8f9ff; border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; font-size: 0.9em; line-height: 1.7; border-left: 4px solid #667eea; }
 .help-box.show { display: block; }
 
@@ -175,8 +173,6 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
     <div class="section active" id="sec-0">
         <div class="card">
             <h2>📝 Wortschatz: Englisch → Deutsch</h2>
-            <button class="help-toggle" onclick="toggleHelp('wsHelp')">💡 Hilfe</button>
-
             <div id="wortschatzContainer"></div>
             <div class="btn-row">
                 <button onclick="showWortschatzLoesung()" style="background:#f5f7ff;border:1px solid #c5cff5;border-radius:8px;padding:6px 16px;font-size:0.85em;color:#667eea;cursor:pointer;font-weight:600;">💡 Lösungen</button>
@@ -195,8 +191,6 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
     <div class="section" id="sec-1">
         <div class="card">
             <h2>🔀 Genus: der, die oder das?</h2>
-            <button class="help-toggle" onclick="toggleHelp('genusHelp')">💡 Hilfe</button>
-
             <div class="genus-categories">
                 <div class="genus-cat" data-cat="der" ondrop="dropGenus(event)" ondragover="allowDrop(event)">
                     <div class="genus-cat-title">der</div>
@@ -206,6 +200,9 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
                 </div>
                 <div class="genus-cat" data-cat="das" ondrop="dropGenus(event)" ondragover="allowDrop(event)">
                     <div class="genus-cat-title">das</div>
+                </div>
+                <div class="genus-cat" data-cat="pl" ondrop="dropGenus(event)" ondragover="allowDrop(event)">
+                    <div class="genus-cat-title">Plural</div>
                 </div>
             </div>
             <div class="chip-bank" id="genusBank" ondrop="dropGenus(event)" ondragover="allowDrop(event)"></div>
@@ -226,8 +223,6 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
     <div class="section" id="sec-2">
         <div class="card">
             <h2>✏️ Lückentext: Buchstaben ergänzen</h2>
-            <button class="help-toggle" onclick="toggleHelp('lueckenHelp')">💡 Hilfe</button>
-
             <div id="lueckenContainer"></div>
             <div class="btn-row">
                 <button onclick="showLueckenLoesung()" style="background:#f5f7ff;border:1px solid #c5cff5;border-radius:8px;padding:6px 16px;font-size:0.85em;color:#667eea;cursor:pointer;font-weight:600;">💡 Lösungen</button>
@@ -246,59 +241,49 @@ input.blank.wrong { border-bottom-color: #e74c3c; background: #fdeaea; color: #e
     <div class="section" id="sec-3">
         <div class="card">
             <h2>🧩 Satzbau: Sätze ordnen</h2>
-            <button class="help-toggle" onclick="toggleHelp('sbHelp')">💡 Hilfe</button>
-
             <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-0').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-0"></div>
 <div class="sentence-builder" id="sb-row-0"></div>
 <div class="satzbau-feedback" id="sb-fb-0"></div>
 <button onclick="sbShowSolution(0)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-1').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-1"></div>
 <div class="sentence-builder" id="sb-row-1"></div>
 <div class="satzbau-feedback" id="sb-fb-1"></div>
 <button onclick="sbShowSolution(1)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-2').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-2"></div>
 <div class="sentence-builder" id="sb-row-2"></div>
 <div class="satzbau-feedback" id="sb-fb-2"></div>
 <button onclick="sbShowSolution(2)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-3').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-3"></div>
 <div class="sentence-builder" id="sb-row-3"></div>
 <div class="satzbau-feedback" id="sb-fb-3"></div>
 <button onclick="sbShowSolution(3)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-4').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-4"></div>
 <div class="sentence-builder" id="sb-row-4"></div>
 <div class="satzbau-feedback" id="sb-fb-4"></div>
 <button onclick="sbShowSolution(4)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-5').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-5"></div>
 <div class="sentence-builder" id="sb-row-5"></div>
 <div class="satzbau-feedback" id="sb-fb-5"></div>
 <button onclick="sbShowSolution(5)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-6').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-6"></div>
 <div class="sentence-builder" id="sb-row-6"></div>
 <div class="satzbau-feedback" id="sb-fb-6"></div>
 <button onclick="sbShowSolution(6)" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:0.85em;">Lösung anzeigen</button>
 </div>
 <div style="margin-bottom:18px;">
-<button onclick="document.getElementById('sb-help-7').classList.toggle('show')" class="help-toggle" style="margin-bottom:8px;">Tipp anzeigen</button>
 <div class="chips-container" id="sb-bank-7"></div>
 <div class="sentence-builder" id="sb-row-7"></div>
 <div class="satzbau-feedback" id="sb-fb-7"></div>
@@ -330,9 +315,6 @@ function showSection(idx) {
     document.querySelectorAll('.nav-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
 }
 
-function toggleHelp(id) {
-    document.getElementById(id).classList.toggle('show');
-}
 
 // ===================================
 // TIMER SYSTEM
