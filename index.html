@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F0EAFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2b2242" media="(prefers-color-scheme: dark)">
     <title>Lückentexte Mattmüller – DaF Übungen</title>
-    <style>
+    <style>/* ===== FB-DESIGN-TOKENS (auto) ===== */
+:root {
+  --grad-page-a: #F0EAFF;
+  --bd-128c4a: #128c4a;
+  --bd-25d366: #25d366;
+  --bg-e8faf0: #e8faf0;
+  --bg-eee: #eee;
+  --bg-white: white;
+  --tx-075e33: #075e33;
+  --tx-128c4a: #128c4a;
+  --tx-241048: #241048;
+  --tx-34206b: #34206b;
+  --tx-555: #555;
+  --tx-888: #888;
+  --tx-white: white;
+}
+
         :root {
             --primary-color: #7B68EE;
             --primary-dark: #6050CC;
@@ -24,7 +42,7 @@
             font-size: 18px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text-dark);
-            background: linear-gradient(135deg, var(--bg-light) 0%, #F0EAFF 100%);
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--grad-page-a) 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -79,7 +97,7 @@
         }
         .rubrik-badge {
             background: var(--primary-color);
-            color: white;
+            color: var(--tx-white);
             font-weight: 700;
             font-size: 0.8rem;
             padding: 0.3rem 0.8rem;
@@ -97,7 +115,7 @@
             gap: 1.2rem;
         }
         .card {
-            background: white;
+            background: var(--bg-white);
             border-radius: 12px;
             padding: 1.2rem 1.4rem;
             box-shadow: var(--shadow);
@@ -171,8 +189,8 @@
         }
         .card-wa {
             background: none;
-            border: 1.5px solid #25d366;
-            color: #128c4a;
+            border: 1.5px solid var(--bd-25d366);
+            color: var(--tx-128c4a);
             padding: 0.25rem 0.7rem;
             border-radius: 6px;
             font-size: 0.78rem;
@@ -186,9 +204,9 @@
             gap: 0.25rem;
         }
         .card-wa:hover {
-            background: #e8faf0;
-            border-color: #128c4a;
-            color: #075e33;
+            background: var(--bg-e8faf0);
+            border-color: var(--bd-128c4a);
+            color: var(--tx-075e33);
         }
 
         /* Modal */
@@ -202,7 +220,7 @@
         }
         .modal-overlay.show { display: flex; }
         .modal {
-            background: white;
+            background: var(--bg-white);
             border-radius: 16px;
             padding: 2rem;
             max-width: 420px;
@@ -230,18 +248,18 @@
         }
         .btn-send {
             background: var(--primary-color);
-            color: white;
+            color: var(--tx-white);
         }
         .btn-cancel {
-            background: #eee;
-            color: #555;
+            background: var(--bg-eee);
+            color: var(--tx-555);
         }
 
         .footer {
             text-align: center;
             padding: 2rem;
             font-size: 0.85rem;
-            color: #888;
+            color: var(--tx-888);
             border-top: 1px solid var(--border-color);
             margin-top: auto;
         }
@@ -259,7 +277,7 @@
   background: rgba(118, 75, 162, 0.26);
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   backdrop-filter: blur(14px) saturate(180%);
-  color: #34206b; border: 1.5px solid rgba(255,255,255,0.75); border-radius: 28px;
+  color: var(--tx-34206b); border: 1.5px solid rgba(255,255,255,0.75); border-radius: 28px;
   padding: 15px 26px; font-size: 1.05em; font-weight: 800;
   letter-spacing: 0.2px;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -271,13 +289,85 @@
   z-index: 9999; display: inline-flex; align-items: center; gap: 8px;
 }
 .fb-jumptop.show { opacity: 1; visibility: visible; transform: translateY(0); }
-.fb-jumptop:hover { background: rgba(118, 75, 162, 0.40); color: #241048; box-shadow: 0 10px 32px rgba(102,126,234,0.50), inset 0 1px 0 rgba(255,255,255,0.65); }
+.fb-jumptop:hover { background: rgba(118, 75, 162, 0.40); color: var(--tx-241048); box-shadow: 0 10px 32px rgba(102,126,234,0.50), inset 0 1px 0 rgba(255,255,255,0.65); }
 @media (max-width: 600px) { .fb-jumptop { bottom: 18px; right: 16px; padding: 12px 18px; font-size: 0.95em; } }
+
+/* FB-THEME-TOGGLE */
+.header { position: relative; }
+.theme-toggle {
+  position: absolute; top: 14px; right: 14px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.4);
+  color: white; font-size: 1.05em; cursor: pointer; line-height: 1;
+  transition: background 0.2s; z-index: 5;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.3); }
+
+/* ===== FB-DARK-MODE (System-Default + manueller Schalter) ===== */
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+  --grad-page-a: #2b2242;
+  --bd-25d366: #2c6d44;
+  --bg-e8faf0: #183726;
+  --bg-eee: #21212f;
+  --bg-white: #262a44;
+  --tx-075e33: #99f0c5;
+  --tx-128c4a: #8aeeb8;
+  --tx-241048: #d9cef8;
+  --tx-34206b: #cbbcf6;
+  --tx-555: #b6bad0;
+  --tx-888: #8e93b0;
+}
+:root:not([data-theme="light"]) .tab-banner { box-shadow: 0 2px 8px rgba(0,0,0,0.45); }
+:root:not([data-theme="light"]) body { color: #c6cade; }
+:root:not([data-theme="light"]) button, :root:not([data-theme="light"]) input, :root:not([data-theme="light"]) select, :root:not([data-theme="light"]) textarea { color: inherit; }
+}
+:root[data-theme="dark"] {
+  --grad-page-a: #2b2242;
+  --bd-25d366: #2c6d44;
+  --bg-e8faf0: #183726;
+  --bg-eee: #21212f;
+  --bg-white: #262a44;
+  --tx-075e33: #99f0c5;
+  --tx-128c4a: #8aeeb8;
+  --tx-241048: #d9cef8;
+  --tx-34206b: #cbbcf6;
+  --tx-555: #b6bad0;
+  --tx-888: #8e93b0;
+}
+html[data-theme="dark"] .tab-banner { box-shadow: 0 2px 8px rgba(0,0,0,0.45); }
+html[data-theme="dark"] body { color: #c6cade; }
+html[data-theme="dark"] button, html[data-theme="dark"] input, html[data-theme="dark"] select, html[data-theme="dark"] textarea { color: inherit; }
 </style>
+<script>/* FB-THEME-INIT */
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('fb-theme'); } catch(e) {}
+  if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+  function effDark() {
+    var t = document.documentElement.dataset.theme;
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function paint() {
+    var b = document.getElementById('themeToggle');
+    if (b) b.textContent = effDark() ? '☀️' : '🌙';
+  }
+  window.fbToggleTheme = function() {
+    var next = effDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('fb-theme', next); } catch(e) {}
+    paint();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', paint); else paint();
+})();
+</script>
 </head>
 <body>
 
 <div class="header">
+  <button class="theme-toggle" id="themeToggle" onclick="fbToggleTheme()" aria-label="Hell/Dunkel umschalten">🌙</button>
     <h1>✏️ Lückentexte Mattmüller</h1>
     <p>Interaktive DaF-Übungen · Wortschatz · Genus · Lückentext · Satzbau</p>
 </div>
